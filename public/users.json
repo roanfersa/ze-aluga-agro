@@ -1,0 +1,257 @@
+[
+  {
+    "id": 1,
+    "name": "Ana Silva",
+    "email": "ana.silva@example.com",
+    "phone": "+55 11 99999-1111",
+    "is_seller": true,
+    "store_name": "Loja da Ana",
+    "product_count": 120,
+    "followers_count": 350
+  },
+  {
+    "id": 2,
+    "name": "Carlos Oliveira",
+    "email": "carlos.oliveira@example.com",
+    "phone": "+55 21 98888-2222",
+    "is_seller": false
+  },
+  {
+    "id": 3,
+    "name": "Mariana Santos",
+    "email": "mariana.santos@example.com",
+    "phone": "+55 31 97777-3333",
+    "is_seller": true,
+    "store_name": "Artes da Mari",
+    "product_count": 75,
+    "followers_count": 200
+  },
+  {
+    "id": 4,
+    "name": "João Lima",
+    "email": "joao.lima@example.com",
+    "phone": "+55 47 96666-4444",
+    "is_seller": false
+  },
+  {
+    "id": 5,
+    "name": "Beatriz Rocha",
+    "email": "beatriz.rocha@example.com",
+    "phone": "+55 41 95555-5555",
+    "is_seller": true,
+    "store_name": "Beatriz Boutique",
+    "product_count": 200,
+    "followers_count": 500
+  },
+  {
+    "id": 6,
+    "name": "Rafael Souza",
+    "email": "rafael.souza@example.com",
+    "phone": "+55 11 94444-6666",
+    "is_seller": false
+  },
+  {
+    "id": 7,
+    "name": "Camila Borges",
+    "email": "camila.borges@example.com",
+    "phone": "+55 31 93333-7777",
+    "is_seller": true,
+    "store_name": "Cami Decorações",
+    "product_count": 95,
+    "followers_count": 320
+  },
+  {
+    "id": 8,
+    "name": "Lucas Nunes",
+    "email": "lucas.nunes@example.com",
+    "phone": "+55 51 92222-8888",
+    "is_seller": false
+  },
+  {
+    "id": 9,
+    "name": "Paula Mendes",
+    "email": "paula.mendes@example.com",
+    "phone": "+55 21 91111-9999",
+    "is_seller": true,
+    "store_name": "Paula Artigos",
+    "product_count": 150,
+    "followers_count": 250
+  },
+  {
+    "id": 10,
+    "name": "Vinícius Barbosa",
+    "email": "vinicius.barbosa@example.com",
+    "phone": "+55 81 90000-0000",
+    "is_seller": false
+  },
+  {
+    "id": 11,
+    "name": "Juliana Castro",
+    "email": "juliana.castro@example.com",
+    "phone": "+55 71 98888-1111",
+    "is_seller": true,
+    "store_name": "Juliana Joias",
+    "product_count": 80,
+    "followers_count": 410
+  },
+  {
+    "id": 12,
+    "name": "Roberto Almeida",
+    "email": "roberto.almeida@example.com",
+    "phone": "+55 91 97777-2222",
+    "is_seller": false
+  },
+  {
+    "id": 13,
+    "name": "Larissa Pinto",
+    "email": "larissa.pinto@example.com",
+    "phone": "+55 31 96666-3333",
+    "is_seller": true,
+    "store_name": "Larissa Fashion",
+    "product_count": 45,
+    "followers_count": 150
+  },
+  {
+    "id": 14,
+    "name": "Fernando Costa",
+    "email": "fernando.costa@example.com",
+    "phone": "+55 11 95555-4444",
+    "is_seller": false
+  },
+  {
+    "id": 15,
+    "name": "Patrícia Farias",
+    "email": "patricia.farias@example.com",
+    "phone": "+55 21 94444-5555",
+    "is_seller": true,
+    "store_name": "Pati Variedades",
+    "product_count": 130,
+    "followers_count": 380
+  },
+  {
+    "id": 16,
+    "name": "Bruno Fernandes",
+    "email": "bruno.fernandes@example.com",
+    "phone": "+55 81 93333-6666",
+    "is_seller": false
+  },
+  {
+    "id": 17,
+    "name": "Daniela Ramos",
+    "email": "daniela.ramos@example.com",
+    "phone": "+55 91 92222-7777",
+    "is_seller": true,
+    "store_name": "Daniela Acessórios",
+    "product_count": 90,
+    "followers_count": 290
+  },
+  {
+    "id": 18,
+    "name": "Guilherme Silva",
+    "email": "guilherme.silva@example.com",
+    "phone": "+55 71 91111-8888",
+    "is_seller": false
+  },
+  {
+    "id": 19,
+    "name": "Cláudia Martins",
+    "email": "claudia.martins@example.com",
+    "phone": "+55 41 90000-9999",
+    "is_seller": true,
+    "store_name": "Cláudia Beleza",
+    "product_count": 110,
+    "followers_count": 450
+  },
+  {
+    "id": 20,
+    "name": "Felipe Oliveira",
+    "email": "felipe.oliveira@example.com",
+    "phone": "+55 31 98888-0000",
+    "is_seller": false
+  },
+  {
+    "id": 21,
+    "name": "Renata Lopes",
+    "email": "renata.lopes@example.com",
+    "phone": "+55 11 97777-1111",
+    "is_seller": true,
+    "store_name": "Loja da Renata",
+    "product_count": 140,
+    "followers_count": 340
+  },
+  {
+    "id": 22,
+    "name": "Thiago Pereira",
+    "email": "thiago.pereira@example.com",
+    "phone": "+55 21 96666-2222",
+    "is_seller": false
+  },
+  {
+    "id": 23,
+    "name": "Sabrina Oliveira",
+    "email": "sabrina.oliveira@example.com",
+    "phone": "+55 31 95555-3333",
+    "is_seller": true,
+    "store_name": "Sabrina Modas",
+    "product_count": 60,
+    "followers_count": 220
+  },
+  {
+    "id": 24,
+    "name": "Eduardo Mota",
+    "email": "eduardo.mota@example.com",
+    "phone": "+55 51 94444-4444",
+    "is_seller": false
+  },
+  {
+    "id": 25,
+    "name": "Alice Souza",
+    "email": "alice.souza@example.com",
+    "phone": "+55 47 93333-5555",
+    "is_seller": true,
+    "store_name": "Alice Kids",
+    "product_count": 50,
+    "followers_count": 180
+  },
+  {
+    "id": 26,
+    "name": "Pedro Andrade",
+    "email": "pedro.andrade@example.com",
+    "phone": "+55 61 92222-6666",
+    "is_seller": false
+  },
+  {
+    "id": 27,
+    "name": "Tatiana Teixeira",
+    "email": "tatiana.teixeira@example.com",
+    "phone": "+55 71 91111-7777",
+    "is_seller": true,
+    "store_name": "Tatiana Presentes",
+    "product_count": 105,
+    "followers_count": 330
+  },
+  {
+    "id": 28,
+    "name": "Henrique Almeida",
+    "email": "henrique.almeida@example.com",
+    "phone": "+55 11 90000-8888",
+    "is_seller": false
+  },
+  {
+    "id": 29,
+    "name": "Monica Reis",
+    "email": "monica.reis@example.com",
+    "phone": "+55 21 98888-9999",
+    "is_seller": true,
+    "store_name": "Monica Decor",
+    "product_count": 125,
+    "followers_count": 390
+  },
+  {
+    "id": 30,
+    "name": "Rodrigo Santana",
+    "email": "rodrigo.santana@example.com",
+    "phone": "+55 31 97777-0000",
+    "is_seller": false
+  }
+]
