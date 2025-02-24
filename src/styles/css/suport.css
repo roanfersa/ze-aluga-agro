@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+a {
+  text-decoration: none;
+}
+
+.color-custom-primary {
+  color: #003321;
+}
+
+.color-custom-secondary {
+  color: #DCFFD7;
+}
+
+.bg-custom-primary {
+  background-color: #003321;
+}
+
+.bg-custom-secondary {
+  background-color: #DCFFD7;
+}
+
+.bg-icon-color {
+  background-color: #F9F9F9;
+}
+
+.outline-custom-primary {
+  border-color: #003321;
+}
+
+.outline-custom-secondary {
+  border-color: #DCFFD7;
+}
+
+.text-custom-primary {
+  color: #003321;
+}
+
+.text-custom-secondary {
+  color: #DCFFD7;
+}
+
+.text-custom-tertiary {
+  color: #5C6C7B;
+}
+
+.font-family-primary {
+  font-family: "Raleway", sans-serif;
+}
+
+.font-family-secondary {
+  font-family: "Inter", sans-serif;
+}
+
+.fs-font-headings {
+  font-size: 24px;
+}
+
+.fs-font-headings-product-page {
+  font-size: 32px !important;
+}
+
+.fs-product-card-title {
+  font-size: 14px;
+}
+
+.fs-product-card-price {
+  font-size: 16px;
+}
+
+.fs-product-card-location-icon {
+  font-size: 10px;
+}
+
+.fs-product-card-location {
+  font-size: 10px;
+}
+
+.fs-product-card-units {
+  font-size: 10px;
+}
+
+.fs-custom-category {
+  font-size: 10px !important;
+}
+
+.form-check-input:checked {
+  background-color: #003321;
+  border-color: #003321;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  background-color: transparent !important;
+}
+
+#form-card {
+  width: 500px;
+}
+
+input {
+  background-color: transparent !important;
+  border-color: #003321 !important;
+  margin-top: 12px;
+  color: #003321 !important;
+}
+
+input::placeholder {
+  color: #003321 !important;
+  opacity: 1;
+}
+
+input:focus::placeholder {
+  color: #003321 !important;
+}
+
+input:focus {
+  border-color: #00FF00 !important;
+  box-shadow: 0 0 5px #00FF00 !important;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+#userTypeInput {
+  padding-right: 30px;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+.stats-section {
+  background-color: #003321;
+  color: #c1f0dc;
+  padding: 50px 0;
+}
+
+.stats-title {
+  color: #c1f0dc;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c1f0dc;
+}
+
+.stat-description {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.description-text {
+  color: #a3a3a3;
+}
+
+.learn-more-btn {
+  border: 1px solid #c1f0dc;
+  color: #c1f0dc;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.learn-more-btn:hover {
+  background-color: #c1f0dc;
+  color: #0b3a34;
+}
+
+.faq-section {
+  padding: 50px 0;
+}
+
+.faq-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.accordion-button {
+  background-color: #ffffff !important;
+  color: #333;
+  font-weight: bold;
+  box-shadow: none;
+  border-radius: 10px !important;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #003321;
+  background-color: #f7f7f7 !important;
+}
+
+.accordion-item {
+  background-color: #ffffff;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-body {
+  color: #6c757d;
+  padding: 1rem 1.5rem;
+}
+
+/*# sourceMappingURL=suport.css.map */

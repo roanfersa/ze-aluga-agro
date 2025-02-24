@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+a {
+  text-decoration: none;
+}
+
+.color-custom-primary {
+  color: #003321;
+}
+
+.color-custom-secondary {
+  color: #DCFFD7;
+}
+
+.bg-custom-primary {
+  background-color: #003321;
+}
+
+.bg-custom-secondary {
+  background-color: #DCFFD7;
+}
+
+.bg-icon-color {
+  background-color: #F9F9F9;
+}
+
+.outline-custom-primary {
+  border-color: #003321;
+}
+
+.outline-custom-secondary {
+  border-color: #DCFFD7;
+}
+
+.text-custom-primary {
+  color: #003321;
+}
+
+.text-custom-secondary {
+  color: #DCFFD7;
+}
+
+.text-custom-tertiary {
+  color: #5C6C7B;
+}
+
+.font-family-primary {
+  font-family: "Raleway", sans-serif;
+}
+
+.font-family-secondary {
+  font-family: "Inter", sans-serif;
+}
+
+.fs-font-headings {
+  font-size: 24px;
+}
+
+.fs-font-headings-product-page {
+  font-size: 32px !important;
+}
+
+.fs-product-card-title {
+  font-size: 14px;
+}
+
+.fs-product-card-price {
+  font-size: 16px;
+}
+
+.fs-product-card-location-icon {
+  font-size: 10px;
+}
+
+.fs-product-card-location {
+  font-size: 10px;
+}
+
+.fs-product-card-units {
+  font-size: 10px;
+}
+
+.fs-custom-category {
+  font-size: 10px !important;
+}
+
+.form-check-input:checked {
+  background-color: #003321;
+  border-color: #003321;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* HERO SECTION */
+.carousel-indicators.custom-indicators {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  margin-left: 0;
+  justify-content: flex-start;
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  padding-left: 90px;
+}
+
+#mainCarousel {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.carousel-indicators.custom-indicators button {
+  width: 10px;
+  height: 10px;
+  background-color: #006400;
+  border-radius: 50%;
+  opacity: 0;
+  border: none;
+  margin: 0 4px;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators.custom-indicators .active {
+  width: 30px;
+  height: 10px;
+  background-color: #006400;
+  border-radius: 15px;
+  opacity: 1;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 20px;
+  height: 20px;
+  background-color: #006400;
+  border-radius: 15%;
+  opacity: 0.8;
+  top: auto;
+  bottom: -20px;
+  right: 0;
+  margin-right: 105px;
+}
+
+.carousel-control-prev {
+  right: 25px;
+  left: auto;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.banner_black {
+  width: 280px;
+  height: 280px;
+}
+
+.banner_hero {
+  width: 885px;
+}
+
+/* CATEGORY SECTION */
+.category_btn {
+  width: 138px;
+  height: 138px;
+}
+
+.category_btn > i,
+.category_btn > img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  color: #003321;
+  box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.4);
+}
+
+.category_btn > i {
+  font-size: 32px;
+}
+
+.category_btn > p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin: 10px auto;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  border: solid 1px rgba(221, 221, 221, 0.8666666667);
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+@media (min-width: 1200px) {
+  .row-cols-xl-5 > * {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+/* BLACK FRIDAY */
+#black-promotions .card-img-top {
+  height: 150px;
+  background-color: #f0f0f0;
+  border-radius: 8px 8px 0 0;
+}
+
+#countdown {
+  display: flex;
+  align-items: center;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-item span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+}
+
+.countdown-label {
+  font-size: 0.75rem;
+  color: #000;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* CARD SECTION 01 */
+#easier-choice h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.bg-gradient-purple {
+  background: linear-gradient(135deg, #003321, #006400);
+}
+
+.bg-gradient-teal {
+  background: linear-gradient(135deg, #003321, #006400);
+}
+
+.bg-gradient-red {
+  background: linear-gradient(135deg, #003321, #006400);
+}
+
+.bg-gradient-orange {
+  background: linear-gradient(135deg, #003321, #006400);
+}
+
+.bg-gradient-pink {
+  background: linear-gradient(135deg, #003321, #006400);
+}
+
+.card h5 {
+  font-weight: 600;
+}
+
+.card small {
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+/* CARD SECTION 02 */
+#product-info-section .card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+#product-info-section .card-title {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+  max-height: 3.2em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.color-bar {
+  width: 4px;
+  height: 100%;
+  border-radius: 2px;
+}
+
+.bg-blue {
+  background-color: #003321;
+}
+
+.bg-pink {
+  background-color: #003321;
+}
+
+.bg-purple {
+  background-color: #003321;
+}
+
+.bg-red {
+  background-color: #003321;
+}
+
+.product-thumbnail {
+  width: 100%;
+  height: 120px;
+  background-color: #6c757d;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+/* BEST SELLERS SECTION */
+.card {
+  position: relative;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.banner {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  position: absolute;
+  top: 60px;
+  left: 16px;
+  background-color: #fff;
+  object-fit: cover;
+}
+
+.card-body {
+  padding-top: 40px;
+}
+
+.store-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.seller-name {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.stats div {
+  text-align: center;
+  flex: 1;
+}
+
+.stats div:not(:last-child) {
+  border-right: 1px solid #ddd;
+}
+
+.stats div span {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.follow-button {
+  padding: 8px 16px;
+  background-color: #006400;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=home.css.map */

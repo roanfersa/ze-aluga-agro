@@ -1,0 +1,159 @@
+@use "global";
+
+.card {
+  background-color: transparent !important;
+}
+
+#form-card {
+  width: 500px;
+
+}
+
+input {
+  background-color: transparent !important;
+  border-color: #003321 !important;
+  margin-top: 12px;
+  color: #003321 !important;
+}
+
+input::placeholder {
+  color: #003321 !important;
+  opacity: 1;
+}
+
+input:focus::placeholder {
+  color: #003321 !important;
+}
+
+
+input:focus {
+  border-color: #00FF00 !important;
+  box-shadow: 0 0 5px #00FF00 !important;
+}
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+
+#userTypeInput {
+  padding-right: 30px;
+}
+
+
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #003321;
+  pointer-events: none;
+}
+
+.stats-section {
+  background-color: #003321;
+  color: #c1f0dc;
+  padding: 50px 0;
+}
+
+.stats-title {
+  color: #c1f0dc;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c1f0dc;
+}
+
+.stat-description {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.description-text {
+  color: #a3a3a3;
+}
+
+.learn-more-btn {
+  border: 1px solid #c1f0dc;
+  color: #c1f0dc;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.learn-more-btn:hover {
+  background-color: #c1f0dc;
+  color: #0b3a34;
+}
+
+.faq-section {
+  padding: 50px 0;
+}
+
+.faq-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.accordion-button {
+  background-color: #ffffff !important;
+  color: #333;
+  font-weight: bold;
+  box-shadow: none;
+  border-radius: 10px !important;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #003321;
+  background-color: #f7f7f7 !important;
+}
+
+.accordion-item {
+  background-color: #ffffff;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-body {
+  color: #6c757d;
+  padding: 1rem 1.5rem;
+}

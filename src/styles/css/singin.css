@@ -1,0 +1,223 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+a {
+  text-decoration: none;
+}
+
+.color-custom-primary {
+  color: #003321;
+}
+
+.color-custom-secondary {
+  color: #DCFFD7;
+}
+
+.bg-custom-primary {
+  background-color: #003321;
+}
+
+.bg-custom-secondary {
+  background-color: #DCFFD7;
+}
+
+.bg-icon-color {
+  background-color: #F9F9F9;
+}
+
+.outline-custom-primary {
+  border-color: #003321;
+}
+
+.outline-custom-secondary {
+  border-color: #DCFFD7;
+}
+
+.text-custom-primary {
+  color: #003321;
+}
+
+.text-custom-secondary {
+  color: #DCFFD7;
+}
+
+.text-custom-tertiary {
+  color: #5C6C7B;
+}
+
+.font-family-primary {
+  font-family: "Raleway", sans-serif;
+}
+
+.font-family-secondary {
+  font-family: "Inter", sans-serif;
+}
+
+.fs-font-headings {
+  font-size: 24px;
+}
+
+.fs-font-headings-product-page {
+  font-size: 32px !important;
+}
+
+.fs-product-card-title {
+  font-size: 14px;
+}
+
+.fs-product-card-price {
+  font-size: 16px;
+}
+
+.fs-product-card-location-icon {
+  font-size: 10px;
+}
+
+.fs-product-card-location {
+  font-size: 10px;
+}
+
+.fs-product-card-units {
+  font-size: 10px;
+}
+
+.fs-custom-category {
+  font-size: 10px !important;
+}
+
+.form-check-input:checked {
+  background-color: #003321;
+  border-color: #003321;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#img-banner {
+  padding: 0px !important;
+}
+
+.card {
+  background-color: transparent !important;
+}
+
+#form-card {
+  width: 418px;
+  height: 500px;
+}
+
+input {
+  background-color: transparent !important;
+  border-color: #DCFFD7;
+  margin-top: 12px;
+  color: #DCFFD7 !important;
+}
+
+input::placeholder {
+  color: #DCFFD7 !important;
+  opacity: 1;
+}
+
+input:focus::placeholder {
+  color: #DCFFD7 !important;
+}
+
+input:focus {
+  border-color: #00FF00 !important;
+  box-shadow: 0 0 5px #00FF00 !important;
+}
+
+/* Position the dropdown icon on the right inside the input field */
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #DCFFD7;
+  pointer-events: none;
+}
+
+/* Position the dropdown icon on the right inside the input field */
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #DCFFD7;
+  pointer-events: none;
+}
+
+/* Ícone do dropdown no lado direito */
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #DCFFD7;
+  pointer-events: none;
+}
+
+/* Ajuste no padding do input para evitar sobreposição com o ícone */
+#userTypeInput {
+  padding-right: 30px;
+}
+
+/* Ícone do dropdown no lado direito */
+.dropdown-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #DCFFD7;
+  pointer-events: none;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #DCF5E6;
+  border-radius: 4px;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-checkbox:checked {
+  border-color: #DCF5E6;
+}
+
+.custom-checkbox:checked::before {
+  color: #0d3a0c;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-check-label {
+  font-size: 13px;
+  color: #A3A3A3;
+}
+
+.divider {
+  border-top: 1px solid #A3A3A3;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.terms-text {
+  font-size: 0.9rem;
+  color: #A3A3A3;
+  text-align: center;
+}
+
+/*# sourceMappingURL=singin.css.map */
