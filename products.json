@@ -1,0 +1,493 @@
+[
+  {
+    "id": 1,
+    "category": "Máquinas de Plantio e Colheita",
+    "name": "Plantadeira Modelo A",
+    "price": "R$ 18.000",
+    "color": "Amarelo",
+    "has_discount": true,
+    "discount_percentage": 12,
+    "is_available": true,
+    "available_units": 15,
+    "rating": 4.6,
+    "location": "Rio Grande do Sul, Brasil",
+    "description": "Plantadeira de precisão para grãos de milho e soja.",
+    "technical_details": {
+      "rows": "6",
+      "power_requirement": "80 CV",
+      "capacity": "300 kg",
+      "weight": "2000 kg"
+    }
+  },
+  {
+    "id": 2,
+    "category": "Máquinas de Plantio e Colheita",
+    "name": "Colheitadeira Série B",
+    "price": "R$ 32.000",
+    "color": "Verde",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 8,
+    "rating": 4.8,
+    "location": "Paraná, Brasil",
+    "description": "Colheitadeira eficiente para pequenos e médios produtores.",
+    "technical_details": {
+      "power": "150 CV",
+      "capacity": "600 kg/h",
+      "dimensions": "6 x 3 x 3.5 metros",
+      "weight": "3200 kg"
+    }
+  },
+  {
+    "id": 3,
+    "category": "Máquinas de Plantio e Colheita",
+    "name": "Trator Agrícola X100",
+    "price": "R$ 50.000",
+    "color": "Azul",
+    "has_discount": true,
+    "discount_percentage": 5,
+    "is_available": false,
+    "available_units": 0,
+    "rating": 4.2,
+    "location": "Minas Gerais, Brasil",
+    "description": "Trator versátil para diversas atividades agrícolas.",
+    "technical_details": {
+      "engine_power": "100 CV",
+      "fuel_capacity": "150 L",
+      "weight": "3500 kg",
+      "transmission": "4x4"
+    }
+  },
+  {
+    "id": 4,
+    "category": "Equipamentos de Irrigação",
+    "name": "Sistema de Aspersão Compacto",
+    "price": "R$ 3.500",
+    "color": "Cinza",
+    "has_discount": true,
+    "discount_percentage": 8,
+    "is_available": true,
+    "available_units": 19,
+    "rating": 4.1,
+    "location": "São Paulo, Brasil",
+    "description": "Sistema compacto de aspersão para áreas pequenas.",
+    "technical_details": {
+      "flow_rate": "1.5 L/h",
+      "coverage": "500 m²",
+      "pressure": "1.5 bar",
+      "materials": "PVC e aço"
+    }
+  },
+  {
+    "id": 5,
+    "category": "Equipamentos de Irrigação",
+    "name": "Mangueira de Irrigação por Gotejamento",
+    "price": "R$ 1.000",
+    "color": "Preto",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 50,
+    "rating": 4.5,
+    "location": "Bahia, Brasil",
+    "description": "Mangueira para irrigação por gotejamento, ideal para plantações de frutas.",
+    "technical_details": {
+      "length": "100 metros",
+      "diameter": "16 mm",
+      "flow_rate": "1.2 L/h",
+      "pressure": "2 bar"
+    }
+  },
+  {
+    "id": 6,
+    "category": "Equipamentos de Irrigação",
+    "name": "Sistema de Microaspersão",
+    "price": "R$ 2.500",
+    "color": "Verde",
+    "has_discount": true,
+    "discount_percentage": 10,
+    "is_available": false,
+    "available_units": 0,
+    "rating": 4.0,
+    "location": "Mato Grosso, Brasil",
+    "description": "Sistema de microaspersão para irrigação de hortas e pomares.",
+    "technical_details": {
+      "flow_rate": "0.8 L/h",
+      "coverage": "300 m²",
+      "pressure": "1.8 bar",
+      "materials": "PVC"
+    }
+  },
+  {
+    "id": 7,
+    "category": "Tecnologia de Monitoramento",
+    "name": "Drone Agrícola Z-200",
+    "price": "R$ 20.000",
+    "color": "Branco",
+    "has_discount": true,
+    "discount_percentage": 7,
+    "is_available": true,
+    "available_units": 5,
+    "rating": 4.6,
+    "location": "Santa Catarina, Brasil",
+    "description": "Drone para monitoramento e pulverização de culturas.",
+    "technical_details": {
+      "battery_life": "60 minutos",
+      "range": "5 km",
+      "camera_resolution": "1080p",
+      "weight": "1.5 kg"
+    }
+  },
+  {
+    "id": 8,
+    "category": "Tecnologia de Monitoramento",
+    "name": "Sensor de Umidade do Solo",
+    "price": "R$ 2.000",
+    "color": "Cinza",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 12,
+    "rating": 4.3,
+    "location": "Goiás, Brasil",
+    "description": "Sensor avançado para medição de umidade em tempo real.",
+    "technical_details": {
+      "range": "10 metros",
+      "precision": "± 0.1%",
+      "battery_life": "1 ano",
+      "wireless": "Sim"
+    }
+  },
+  {
+    "id": 9,
+    "category": "Tecnologia de Monitoramento",
+    "name": "Estação Meteorológica Compacta",
+    "price": "R$ 5.500",
+    "color": "Preto",
+    "has_discount": true,
+    "discount_percentage": 15,
+    "is_available": true,
+    "available_units": 8,
+    "rating": 4.8,
+    "location": "Pará, Brasil",
+    "description": "Estação meteorológica para monitoramento de clima em áreas agrícolas.",
+    "technical_details": {
+      "temperature_range": "-20°C a 50°C",
+      "humidity_range": "0% a 100%",
+      "battery_life": "2 anos",
+      "connectivity": "Wi-Fi"
+    }
+  },
+  {
+    "id": 10,
+    "category": "Implementos de Solo",
+    "name": "Grade Aradora",
+    "price": "R$ 12.000",
+    "color": "Vermelho",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 18,
+    "rating": 4.4,
+    "location": "São Paulo, Brasil",
+    "description": "Grade aradora para preparação de solo em grandes áreas.",
+    "technical_details": {
+      "disk_diameter": "26 cm",
+      "number_of_disks": "20",
+      "working_width": "2.5 metros",
+      "materials": "Aço carbono"
+    }
+  },
+  {
+    "id": 11,
+    "category": "Implementos de Solo",
+    "name": "Subsolador S-100",
+    "price": "R$ 8.500",
+    "color": "Azul",
+    "has_discount": true,
+    "discount_percentage": 10,
+    "is_available": true,
+    "available_units": 9,
+    "rating": 4.2,
+    "location": "Pernambuco, Brasil",
+    "description": "Subsolador para aliviar compactação do solo em profundidade.",
+    "technical_details": {
+      "working_depth": "60 cm",
+      "width": "1.5 metros",
+      "materials": "Aço reforçado",
+      "weight": "800 kg"
+    }
+  },
+  {
+    "id": 12,
+    "category": "Implementos de Solo",
+    "name": "Sulcador de Cana",
+    "price": "R$ 5.000",
+    "color": "Verde",
+    "has_discount": false,
+    "is_available": false,
+    "available_units": 0,
+    "rating": 4.0,
+    "location": "Alagoas, Brasil",
+    "description": "Sulcador para abertura de sulcos em canaviais.",
+    "technical_details": {
+      "width": "2 metros",
+      "depth": "30 cm",
+      "materials": "Ferro fundido",
+      "weight": "500 kg"
+    }
+  },
+  {
+    "id": 13,
+    "category": "Ferramentas de Manutenção",
+    "name": "Chave de Impacto Agrícola",
+    "price": "R$ 800",
+    "color": "Preto",
+    "has_discount": true,
+    "discount_percentage": 12,
+    "is_available": true,
+    "available_units": 30,
+    "rating": 4.5,
+    "location": "Maranhão, Brasil",
+    "description": "Chave de impacto para manutenção de tratores e máquinas.",
+    "technical_details": {
+      "torque": "300 Nm",
+      "battery_life": "2 horas",
+      "weight": "2 kg",
+      "materials": "Aço inoxidável"
+    }
+  },
+  {
+    "id": 14,
+    "category": "Ferramentas de Manutenção",
+    "name": "Lubrificador Manual",
+    "price": "R$ 250",
+    "color": "Vermelho",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 45,
+    "rating": 4.0,
+    "location": "Sergipe, Brasil",
+    "description": "Lubrificador para uso em maquinário agrícola.",
+    "technical_details": {
+      "capacity": "500 ml",
+      "weight": "0.5 kg",
+      "materials": "Aço e plástico",
+      "nozzle_type": "Flexível"
+    }
+  },
+  {
+    "id": 15,
+    "category": "Ferramentas de Manutenção",
+    "name": "Conjunto de Chaves de Boca",
+    "price": "R$ 300",
+    "color": "Cinza",
+    "has_discount": true,
+    "discount_percentage": 5,
+    "is_available": true,
+    "available_units": 25,
+    "rating": 4.3,
+    "location": "Rio de Janeiro, Brasil",
+    "description": "Conjunto de chaves de boca para reparos em campo.",
+    "technical_details": {
+      "number_of_pieces": "10",
+      "materials": "Aço carbono",
+      "weight": "2 kg",
+      "case_included": "Sim"
+    }
+  },
+  {
+    "id": 16,
+    "category": "Processamento e Armazenamento",
+    "name": "Secador de Grãos",
+    "price": "R$ 40.000",
+    "color": "Branco",
+    "has_discount": true,
+    "discount_percentage": 8,
+    "is_available": true,
+    "available_units": 6,
+    "rating": 4.6,
+    "location": "Mato Grosso do Sul, Brasil",
+    "description": "Secador de grãos com alta eficiência energética.",
+    "technical_details": {
+      "capacity": "1000 kg/h",
+      "power": "50 kW",
+      "fuel_type": "Diesel",
+      "weight": "5000 kg"
+    }
+  },
+  {
+    "id": 17,
+    "category": "Processamento e Armazenamento",
+    "name": "Silo para Grãos",
+    "price": "R$ 25.000",
+    "color": "Cinza",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 10,
+    "rating": 4.4,
+    "location": "Paraná, Brasil",
+    "description": "Silo de armazenamento com capacidade para grandes volumes.",
+    "technical_details": {
+      "capacity": "10 toneladas",
+      "material": "Aço galvanizado",
+      "diameter": "5 metros",
+      "height": "10 metros"
+    }
+  },
+  {
+    "id": 18,
+    "category": "Processamento e Armazenamento",
+    "name": "Classificador de Sementes",
+    "price": "R$ 15.000",
+    "color": "Azul",
+    "has_discount": true,
+    "discount_percentage": 10,
+    "is_available": true,
+    "available_units": 4,
+    "rating": 4.2,
+    "location": "Bahia, Brasil",
+    "description": "Classificador para separar sementes por tamanho e qualidade.",
+    "technical_details": {
+      "capacity": "500 kg/h",
+      "power": "15 kW",
+      "dimensions": "3 x 2 x 2 metros",
+      "weight": "1500 kg"
+    }
+  },
+  {
+    "id": 19,
+    "category": "Equipamentos de Proteção (EPIs)",
+    "name": "Máscara de Proteção Respiratória",
+    "price": "R$ 50",
+    "color": "Cinza",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 200,
+    "rating": 4.0,
+    "location": "Ceará, Brasil",
+    "description": "Máscara para proteção contra poeiras e químicos leves.",
+    "technical_details": {
+      "type": "PFF2",
+      "material": "Tecido não-tecido",
+      "weight": "30 g",
+      "replaceable_filter": "Não"
+    }
+  },
+  {
+    "id": 20,
+    "category": "Equipamentos de Proteção (EPIs)",
+    "name": "Luva de Segurança em Couro",
+    "price": "R$ 30",
+    "color": "Marrom",
+    "has_discount": true,
+    "discount_percentage": 15,
+    "is_available": true,
+    "available_units": 100,
+    "rating": 4.5,
+    "location": "São Paulo, Brasil",
+    "description": "Luva resistente para proteger as mãos durante operações agrícolas.",
+    "technical_details": {
+      "material": "Couro",
+      "size": "M",
+      "weight": "150 g",
+      "waterproof": "Sim"
+    }
+  },
+  {
+    "id": 21,
+    "category": "Equipamentos de Proteção (EPIs)",
+    "name": "Óculos de Proteção UV",
+    "price": "R$ 20",
+    "color": "Transparente",
+    "has_discount": true,
+    "discount_percentage": 10,
+    "is_available": true,
+    "available_units": 150,
+    "rating": 4.3,
+    "location": "Piauí, Brasil",
+    "description": "Óculos de proteção contra raios UV para uso ao ar livre.",
+    "technical_details": {
+      "lens_material": "Policarbonato",
+      "uv_protection": "Sim",
+      "adjustable": "Sim",
+      "weight": "50 g"
+    }
+  },
+  {
+    "id": 22,
+    "category": "Máquinas de Plantio e Colheita",
+    "name": "Enfardadeira Compacta",
+    "price": "R$ 28.000",
+    "color": "Vermelho",
+    "has_discount": true,
+    "discount_percentage": 8,
+    "is_available": true,
+    "available_units": 10,
+    "rating": 4.6,
+    "location": "Rio Grande do Norte, Brasil",
+    "description": "Enfardadeira para compactação e empacotamento de fardos de feno.",
+    "technical_details": {
+      "bale_size": "1.2 x 1.2 metros",
+      "capacity": "150 fardos/h",
+      "power_requirement": "75 CV",
+      "weight": "2200 kg"
+    }
+  },
+  {
+    "id": 23,
+    "category": "Equipamentos de Irrigação",
+    "name": "Aspersor de Impacto Industrial",
+    "price": "R$ 900",
+    "color": "Cinza",
+    "has_discount": false,
+    "is_available": true,
+    "available_units": 35,
+    "rating": 4.4,
+    "location": "Espírito Santo, Brasil",
+    "description": "Aspersor de impacto para irrigação em grandes áreas.",
+    "technical_details": {
+      "radius": "15 metros",
+      "flow_rate": "2.5 L/h",
+      "pressure": "3 bar",
+      "materials": "Aço inoxidável e plástico"
+    }
+  },
+  {
+    "id": 24,
+    "category": "Ferramentas de Manutenção",
+    "name": "Macaco Hidráulico para Tratores",
+    "price": "R$ 1.500",
+    "color": "Preto",
+    "has_discount": true,
+    "discount_percentage": 10,
+    "is_available": true,
+    "available_units": 15,
+    "rating": 4.5,
+    "location": "Acre, Brasil",
+    "description": "Macaco hidráulico de alta resistência para levantamento de tratores.",
+    "technical_details": {
+      "lifting_capacity": "10 toneladas",
+      "height_range": "20-60 cm",
+      "weight": "10 kg",
+      "materials": "Aço reforçado"
+    }
+  },
+  {
+    "id": 25,
+    "category": "Equipamentos de Proteção (EPIs)",
+    "name": "Protetor Auditivo Confortável",
+    "price": "R$ 40",
+    "color": "Azul",
+    "has_discount": true,
+    "discount_percentage": 5,
+    "is_available": true,
+    "available_units": 80,
+    "rating": 4.3,
+    "location": "Amazonas, Brasil",
+    "description": "Protetor auditivo para redução de ruído em ambientes agrícolas.",
+    "technical_details": {
+      "noise_reduction": "25 dB",
+      "material": "Espuma e plástico",
+      "weight": "100 g",
+      "adjustable": "Sim"
+    }
+  }
+]
