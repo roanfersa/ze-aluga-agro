@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+// Variáveis para reutilização
+$primary-color: #003321;
+$secondary-color: #DCFFD7;
+$text-dark: #000;
+$text-light: #DCFFD7;
+$box-shadow: 5px 5px 10px #000;
+
+a {
+  text-decoration: none;
+}
+
+
+.color-custom-primary {
+  color: $primary-color;
+}
+
+.color-custom-secondary {
+  color: $secondary-color;
+}
+
+.bg-custom-primary {
+  background-color: $primary-color;
+}
+
+.bg-custom-secondary {
+  background-color: $secondary-color;
+}
+
+.bg-icon-color {
+  background-color: #F9F9F9;
+}
+
+.outline-custom-primary {
+  border-color: $primary-color;
+}
+
+.outline-custom-secondary {
+  border-color: $secondary-color;
+}
+
+.text-custom-primary {
+  color: $primary-color;
+}
+
+.text-custom-secondary {
+  color: $secondary-color;
+}
+
+.text-custom-tertiary {
+  color: #5C6C7B;
+}
+
+.font-family-primary {
+  font-family: 'Raleway', sans-serif;
+}
+
+.font-family-secondary {
+  font-family: 'Inter', sans-serif;
+}
+
+.fs-font-headings {
+  font-size: 24px;
+}
+
+.fs-font-headings-product-page {
+  font-size: 32px !important;
+}
+
+.fs-product-card-title {
+  font-size: 14px;
+}
+
+.fs-product-card-price {
+  font-size: 16px;
+}
+
+.fs-product-card-location-icon {
+  font-size: 10px;
+}
+
+.fs-product-card-location {
+  font-size: 10px;
+}
+
+.fs-product-card-units {
+  font-size: 10px;
+}
+
+.fs-custom-category {
+  font-size: 10px !important;
+}
+
+.form-check-input:checked {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}

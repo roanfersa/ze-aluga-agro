@@ -1,0 +1,76 @@
+@use "global";
+
+// Estilos do Header
+#header {
+  flex-direction: row;
+  height: 72px;
+}
+
+// Logo
+#logo {
+  width: 128px;
+  height: 60px;
+}
+
+// Localização
+#location {
+  width: 175px;
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    margin: auto;
+  }
+
+  &__city {
+    color: global.$primary-color;
+    font-size: 14px;
+    margin: auto;
+  }
+}
+
+// Links de Login
+#logs {
+  a {
+    text-decoration: none;
+  }
+}
+
+// Resultados de Pesquisa
+#search-results {
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  display: none; 
+
+  li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: global.$text-dark;
+
+    &:hover {
+      background-color: #f0f0f0;
+      color: global.$text-dark;
+    }
+  }
+}
+
+// Botão "Zé Busca"
+#zeBuscaBtn {
+  &:hover {
+    background-color: global.$primary-color;
+    color: global.$text-light;
+    margin: 2px;
+    box-shadow: global.$box-shadow;
+  }
+}
