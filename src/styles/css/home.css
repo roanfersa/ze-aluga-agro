@@ -401,4 +401,150 @@ html, body, #root {
   font-size: 1rem;
 }
 
+/* Estilos gerais */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--bs-dark);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* HeroSection */
+.carousel-item {
+  min-height: 500px;
+  background-color: var(--bs-light);
+  padding: 4rem 0;
+}
+
+.banner_hero {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-indicators {
+  bottom: 2rem;
+}
+
+/* CategorySection */
+.category-card {
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-icon {
+  font-size: 2.5rem;
+  color: var(--bs-primary);
+  margin-bottom: 1rem;
+}
+
+/* ProductCard */
+.product-card {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.availability-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.price-container {
+  margin: 1rem 0;
+}
+
+.original-price {
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.current-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--bs-primary);
+}
+
+/* ProductInfoSection */
+.info-card {
+  background-color: white;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--bs-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.info-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+/* BestSellersSection */
+.seller-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid var(--bs-primary);
+}
+
+.seller-card {
+  transition: transform 0.3s ease;
+}
+
+.seller-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .carousel-item {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .banner_hero {
+    margin-top: 2rem;
+  }
+}
+
 /*# sourceMappingURL=home.css.map */
