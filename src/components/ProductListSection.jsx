@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ProductModel } from '../models/products/product_model';
-import { BiStar, BiLocationPlus } from 'react-icons/bi';
+import productsData from '../data/products.json';
 import '../styles/css/home.css';
+import '../styles/css/custom_styles.css';
 
 const ProductCard = ({ product }) => {
+  const calculateDiscountPrice = (price, discountPercentage) => {
+    const numericPrice = parseFloat(price.replace('R$', '').replace('.', '').replace(',', '.'));
+    const discountPrice = numericPrice - (numericPrice * (discountPercentage / 100));
+    return `R$ ${discountPrice.toFixed(2).replace('.', ',')}`;
+  };
+
   return (
     <div className="col">
       <a href={`/product/${product.id}`} className="text-decoration-none">
@@ -24,18 +31,36 @@ const ProductCard = ({ product }) => {
               {product.name}
             </h5>
             <div className="d-flex align-items-center justify-content-between">
-              <p className="card-text text-dark fs-5 fw-bold fs-product-card-price">
-                {product.price}
-              </p>
+              <div>
+                {product.has_discount ? (
+                  <>
+                    <p className="text-muted text-decoration-line-through mb-0">
+                      {product.price}
+                    </p>
+                    <p className="text-dark fs-5 fw-bold fs-product-card-price">
+                      {calculateDiscountPrice(product.price, product.discount_percentage)}
+                    </p>
+                  </>
+                ) : (
+                  <p className="text-dark fs-5 fw-bold fs-product-card-price">
+                    {product.price}
+                  </p>
+                )}
+              </div>
               <div className="d-flex align-items-center">
+                {product.has_discount && (
+                  <span className="badge bg-danger me-2">
+                    -{product.discount_percentage}%
+                  </span>
+                )}
                 <span className="badge bg-light text-warning">
-                  <BiStar /> {product.rating}
+                  <i className="bi bi-star-fill"></i> {product.rating}
                 </span>
               </div>
             </div>
             <div className="d-flex justify-content-between text-muted small">
               <div className="d-flex">
-                <BiLocationPlus className="color-custom-primary fs-product-card-location-icon" />
+                <i className="bi bi-geo-alt color-custom-primary fs-product-card-location-icon"></i>
                 <span className="fs-product-card-location">{product.location}</span>
               </div>
               <span className="fs-product-card-units">
@@ -51,15 +76,20 @@ const ProductCard = ({ product }) => {
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    image: PropTypes.string,
+    color: PropTypes.string,
+    has_discount: PropTypes.bool.isRequired,
+    discount_percentage: PropTypes.number,
+    is_available: PropTypes.bool.isRequired,
+    available_units: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     location: PropTypes.string.isRequired,
-    is_available: PropTypes.bool.isRequired,
-    available_units: PropTypes.number.isRequired
+    description: PropTypes.string,
+    technical_details: PropTypes.object,
+    image: PropTypes.string
   }).isRequired
 };
 
@@ -67,18 +97,9 @@ const ProductListSection = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const response = await fetch('/data/products.json');
-        const data = await response.json();
-        const productModels = data.map(product => ProductModel.fromJson(product));
-        setProducts(productModels);
-      } catch (error) {
-        console.error('Erro ao carregar produtos:', error);
-      }
-    };
-
-    loadProducts();
+    // Convertendo os dados do JSON para instâncias de ProductModel
+    const productModels = productsData.map(product => ProductModel.fromJson(product));
+    setProducts(productModels);
   }, []);
 
   return (

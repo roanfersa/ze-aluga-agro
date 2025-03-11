@@ -1,3 +1,4 @@
+@use "sass:color";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
@@ -7,6 +8,19 @@ $secondary-color: #DCFFD7;
 $text-dark: #000;
 $text-light: #DCFFD7;
 $box-shadow: 5px 5px 10px #000;
+
+// Variáveis
+$card-width: 300px;
+$card-width-lg: 300px;
+$card-width-md: 250px;
+$card-width-sm: 220px;
+$card-width-xs: 280px;
+
+$dark-color: #212529;
+$light-color: #dee2e6;
+
+$border-radius: 8px;
+$shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 a {
   text-decoration: none;
@@ -96,4 +110,172 @@ a {
 .form-check-input:checked {
   background-color: $primary-color;
   border-color: $primary-color;
+}
+
+// Mixin para posicionamento absoluto centralizado
+@mixin absolute-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// Estilos do carrossel de vendedores
+.seller-card {
+  width: calc(25% - 20px); // 4 cards por slide com margem
+  margin: 0 10px;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+  position: relative;
+  flex-shrink: 0;
+
+  .banner {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    @include absolute-center;
+    top: 60px;
+    box-shadow: $shadow;
+  }
+
+  .card-body {
+    padding: 3rem 1rem 1rem;
+    text-align: center;
+  }
+
+  .store-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .seller-name {
+    color: $secondary-color;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+
+    div {
+      text-align: center;
+      color: $secondary-color;
+    }
+
+    span {
+      display: block;
+      font-weight: bold;
+      color: $dark-color;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .follow-button {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #006400;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: color.adjust(#006400, $lightness: -10%);
+    }
+  }
+}
+
+#best-sellers-carousel {
+  padding: 0 2rem;
+  position: relative;
+
+  .carousel-inner {
+    padding: 1rem 0 3rem;
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    margin-right: 0;
+    transition: transform .6s ease-in-out;
+
+    .d-flex {
+      gap: 1rem;
+    }
+  }
+
+  .carousel-control {
+    &-prev,
+    &-next {
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &-prev {
+      left: -20px;
+    }
+
+    &-next {
+      right: -20px;
+    }
+  }
+
+  .carousel-indicators {
+    bottom: -2rem;
+    margin-bottom: 0;
+
+    button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $light-color;
+      margin: 0 4px;
+      opacity: 0.5;
+
+      &.active {
+        background-color: $primary-color;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Media queries atualizadas para 4 cards
+@media (max-width: 1200px) {
+  .seller-card {
+    width: calc(33.333% - 20px); // 3 cards em telas médias
+  }
+}
+
+@media (max-width: 992px) {
+  .seller-card {
+    width: calc(50% - 20px); // 2 cards em telas pequenas
+  }
+}
+
+@media (max-width: 576px) {
+  .seller-card {
+    width: calc(100% - 20px); // 1 card em telas muito pequenas
+  }
 }

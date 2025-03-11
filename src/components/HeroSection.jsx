@@ -1,24 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import bannerBlack from '../assets/images/banner_2 1.png';
 import bannerHero from '../assets/images/banner_hero_01 1.png';
 import '../styles/css/home.css';
 
 const HeroSection = () => {
+  useEffect(() => {
+    // Inicializa o carrossel usando o Bootstrap
+    const carousel = document.getElementById('mainCarousel');
+    if (carousel) {
+      new window.bootstrap.Carousel(carousel, {
+        interval: 5000, // Tempo entre slides em milissegundos
+        wrap: true // Permite que o carrossel volte ao início
+      });
+    }
+  }, []);
+
+  const slides = [
+    {
+      id: 1,
+      blackBanner: bannerBlack,
+      heroBanner: bannerHero
+    },
+    {
+      id: 2,
+      blackBanner: bannerBlack,
+      heroBanner: bannerHero
+    },
+    {
+      id: 3,
+      blackBanner: bannerBlack,
+      heroBanner: bannerHero
+    },
+    {
+      id: 4,
+      blackBanner: bannerBlack,
+      heroBanner: bannerHero
+    }
+  ];
+
   return (
     <div id="mainCarousel" className="container-fluid carousel slide mt-4" data-bs-ride="carousel">
       <div className="carousel-indicators custom-indicators">
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" className="active rounded" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        {slides.map((slide, index) => (
+          <button
+            key={slide.id}
+            type="button"
+            data-bs-target="#mainCarousel"
+            data-bs-slide-to={index}
+            className={index === 0 ? "active rounded" : "rounded"}
+            aria-current={index === 0 ? "true" : "false"}
+            aria-label={`Slide ${index + 1}`}
+          ></button>
+        ))}
       </div>
 
       <div className="carousel-inner custom-carousel-inner">
-        {[1, 2, 3, 4].map((index) => (
-          <div key={index} className={`carousel-item ${index === 1 ? 'active' : ''}`}>
+        {slides.map((slide, index) => (
+          <div key={slide.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
             <div className="d-flex justify-content-center align-items-center">
-              <img className="banner_black img-fluid me-2" src="/src/assets/images/banner_2 1.png" alt="Banner Black Friday" />
-              <img className="banner_hero img-fluid me-2" src="/src/assets/images/banner_hero_01 1.png" alt="Banner Hero" />
+              <img className="banner_black img-fluid me-2" src={slide.blackBanner} alt="Banner Black Friday" />
+              <img className="banner_hero img-fluid me-2" src={slide.heroBanner} alt="Banner Hero" />
             </div>
           </div>
         ))}
