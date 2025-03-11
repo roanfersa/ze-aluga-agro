@@ -1,5 +1,5 @@
 @forward "custom_styles";
-@forward "mixins";
+@use "mixins" as mix;
 
 html, body, #root {
   width: 100%;
