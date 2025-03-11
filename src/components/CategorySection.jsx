@@ -1,4 +1,3 @@
-import { BiWater } from 'react-icons/bi';
 import tractorIcon from '../assets/images/tractor.png';
 import droneIcon from '../assets/images/drone.png';
 import soilIcon from '../assets/images/soil.png';
@@ -8,10 +7,12 @@ import safetyHatIcon from '../assets/images/safety-hat.png';
 import creditIcon from '../assets/images/credit.png';
 import moneyIcon from '../assets/images/money.png';
 import agricultureIcon from '../assets/images/agriculture.png';
+import '../styles/css/home.css';
+import '../styles/css/custom_styles.css';
 
 const categories = [
   { icon: tractorIcon, title: 'Máquinas de\nPlantio e Colheita', type: 'img' },
-  { icon: BiWater, title: 'Equipamento\nde Irrigação', type: 'component' },
+  { icon: 'bi bi-moisture', title: 'Equipamento\nde Irrigação', type: 'component' },
   { icon: droneIcon, title: 'Tecnologia de Monitoramento', type: 'img' },
   { icon: soilIcon, title: 'Implemento\nde Solo', type: 'img' },
   { icon: hoeIcon, title: 'Ferramenta\nde Manutenção', type: 'img' },
@@ -42,7 +43,7 @@ const CategorySection = () => {
                       alt={category.title}
                     />
                   ) : (
-                    <category.icon className="d-flex align-items-center justify-content-center mb-1" />
+                    <i className={`d-flex ${category.icon} align-items-center justify-content-center mb-1`}></i>
                   )}
                   <p className="text-center">
                     {category.title}

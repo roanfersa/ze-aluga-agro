@@ -1,6 +1,7 @@
 import React from 'react';
 import bannerBlack from '../assets/images/banner_2 1.png';
 import bannerHero from '../assets/images/banner_hero_01 1.png';
+import '../styles/css/home.css';
 
 const HeroSection = () => {
   return (
@@ -16,8 +17,8 @@ const HeroSection = () => {
         {[1, 2, 3, 4].map((index) => (
           <div key={index} className={`carousel-item ${index === 1 ? 'active' : ''}`}>
             <div className="d-flex justify-content-center align-items-center">
-              <img className="banner_black img-fluid me-2" src={bannerBlack} alt="Banner Black Friday" />
-              <img className="banner_hero img-fluid me-2" src={bannerHero} alt="Banner Hero" />
+              <img className="banner_black img-fluid me-2" src="/src/assets/images/banner_2 1.png" alt="Banner Black Friday" />
+              <img className="banner_hero img-fluid me-2" src="/src/assets/images/banner_hero_01 1.png" alt="Banner Hero" />
             </div>
           </div>
         ))}
@@ -25,9 +26,11 @@ const HeroSection = () => {
 
       <button className="carousel-control-prev custom-control" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Anterior</span>
       </button>
       <button className="carousel-control-next custom-control" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Próximo</span>
       </button>
     </div>
   );

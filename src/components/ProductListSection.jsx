@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ProductModel } from '../models/products/product_model';
 import { BiStar, BiLocationPlus } from 'react-icons/bi';
+import '../styles/css/home.css';
 
 const ProductCard = ({ product }) => {
   return (
