@@ -121,8 +121,8 @@ a {
 
 // Estilos do carrossel de vendedores
 .seller-card {
-  width: calc(25% - 20px); // 4 cards por slide com margem
-  margin: 0 10px;
+  width: calc(25% - 10px); // Reduzindo a margem para aumentar o espaço do card
+  margin: 0 5px; // Reduzindo a margem lateral
   border-radius: $border-radius;
   overflow: hidden;
   box-shadow: $shadow;
@@ -199,11 +199,11 @@ a {
 }
 
 #best-sellers-carousel {
-  padding: 0 2rem;
   position: relative;
+  padding-bottom: 40px;
 
   .carousel-inner {
-    padding: 1rem 0 3rem;
+    padding: 1rem 0;
     overflow: hidden;
   }
 
@@ -212,70 +212,80 @@ a {
     transition: transform .6s ease-in-out;
 
     .d-flex {
-      gap: 1rem;
+      gap: 20px;
+      justify-content: center;
     }
   }
 
-  .carousel-control {
-    &-prev,
-    &-next {
-      width: 40px;
-      height: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      opacity: 0.8;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-
-    &-prev {
-      left: -20px;
-    }
-
-    &-next {
-      right: -20px;
-    }
-  }
-
-  .carousel-indicators {
-    bottom: -2rem;
-    margin-bottom: 0;
+  .carousel-indicators.custom-indicators {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    margin-left: 0;
+    justify-content: flex-start;
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    padding-left: 90px;
 
     button {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
+      background-color: #006400;
       border-radius: 50%;
-      background-color: $light-color;
-      margin: 0 4px;
       opacity: 0.5;
+      border: none;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
 
       &.active {
-        background-color: $primary-color;
+        width: 30px;
+        height: 10px;
+        background-color: #006400;
+        border-radius: 15px;
         opacity: 1;
       }
     }
+  }
+
+  .carousel-control-prev.custom-control,
+  .carousel-control-next.custom-control {
+    width: 20px;
+    height: 20px;
+    background-color: #006400;
+    border-radius: 15%;
+    opacity: 0.8;
+    top: auto;
+    bottom: -30px;
+    margin: 0;
+  }
+
+  .carousel-control-prev.custom-control {
+    right: 25px;
+    left: auto;
+  }
+
+  .carousel-control-next.custom-control {
+    right: 0;
   }
 }
 
 // Media queries atualizadas para 4 cards
 @media (max-width: 1200px) {
   .seller-card {
-    width: calc(33.333% - 20px); // 3 cards em telas médias
+    width: calc(33.333% - 10px); // 3 cards em telas médias
   }
 }
 
 @media (max-width: 992px) {
   .seller-card {
-    width: calc(50% - 20px); // 2 cards em telas pequenas
+    width: calc(50% - 10px); // 2 cards em telas pequenas
   }
 }
 
 @media (max-width: 576px) {
   .seller-card {
-    width: calc(100% - 20px); // 1 card em telas muito pequenas
+    width: calc(100% - 10px); // 1 card em telas muito pequenas
   }
 }

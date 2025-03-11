@@ -2,35 +2,51 @@ import React, { useEffect, useState } from 'react';
 import { UserSellerModel } from '../models/users/user_seller_model';
 import usersData from '../data/users.json';
 import '../styles/css/home.css';
-import '../styles/css/custom_styles.css';
 
-const SellerCard = ({ seller }) => {
-  return (
-    <div className="card seller-card">
-      <img src={seller.banner || 'https://via.placeholder.com/500x200'} alt="Banner" className="banner" />
-      <img src={seller.profile_picture || 'https://via.placeholder.com/80'} alt="Foto de Perfil" className="profile-pic" />
-      <div className="card-body">
-        <div className="store-name">{seller.store_name}</div>
-        <div className="seller-name">por {seller.name}</div>
-        <div className="stats">
-          <div>
-            <span>{seller.product_count || 0}</span>
-            Produtos
-          </div>
-          <div>
-            <span>{seller.deals_count || 0}</span>
-            Negócios
-          </div>
-          <div>
-            <span>{seller.followers_count || 0}</span>
-            Seguidores
-          </div>
+class SellerCardComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
+    set seller(data) {
+        this.render(data);
+    }
+
+    render(seller) {
+        this.shadowRoot.innerHTML = `
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/src/styles/css/home.css">
+        <link rel="stylesheet" href="/src/styles/css/custom_styles.css">
+
+        <div class="card">
+            <img src="${seller.banner || 'https://via.placeholder.com/150'}" alt="Banner" class="banner">
+            <img src="${seller.profile_picture || 'https://via.placeholder.com/80'}" alt="Foto de Perfil" class="profile-pic">
+            <div class="card-body">
+                <div class="store-name">${seller.store_name}</div>
+                <div class="seller-name">por ${seller.name}</div>
+                <div class="stats">
+                    <div>
+                        <span>${seller.product_count || 0}</span>
+                        Produtos
+                    </div>
+                    <div>
+                        <span>${seller.deals_count || 0}</span>
+                        Negócios
+                    </div>
+                    <div>
+                        <span>${seller.followers_count || 0}</span>
+                        Seguidores
+                    </div>
+                </div>
+                <button class="follow-button">Seguir</button>
+            </div>
         </div>
-        <button className="follow-button">Seguir</button>
-      </div>
-    </div>
-  );
-};
+    `;
+    }
+}
+
+customElements.define('seller-card', SellerCardComponent);
 
 const BestSellersSection = () => {
   const [sellers, setSellers] = useState([]);
@@ -39,72 +55,106 @@ const BestSellersSection = () => {
   useEffect(() => {
     const sellerUsers = usersData
       .filter(user => user.is_seller)
-      .map(user => ({
-        ...user,
-        banner: 'https://via.placeholder.com/500x200',
-        profile_picture: 'https://via.placeholder.com/80',
-        deals_count: Math.floor(Math.random() * 100)
-      }));
+      .map(user => new UserSellerModel(
+        user.id,
+        user.name,
+        user.email,
+        user.phone,
+        user.is_seller,
+        user.store_name,
+        user.product_count,
+        user.followers_count
+      ));
 
     setSellers(sellerUsers);
   }, []);
 
-  const groupedSellers = sellers.reduce((acc, seller, index) => {
-    const slideIndex = Math.floor(index / itemsPerSlide);
-    if (!acc[slideIndex]) {
-      acc[slideIndex] = [];
-    }
-    acc[slideIndex].push(seller);
-    return acc;
-  }, []);
-
   useEffect(() => {
     const carousel = document.getElementById('best-sellers-carousel');
-    if (carousel) {
-      new window.bootstrap.Carousel(carousel, {
+    const carouselInner = document.getElementById('best-sellers-carousel-inner');
+    const indicators = document.querySelector('.carousel-indicators.custom-indicators');
+
+    if (carousel && carouselInner && indicators) {
+      // Limpa o conteúdo existente
+      carouselInner.innerHTML = '';
+      indicators.innerHTML = '';
+
+      // Agrupa os vendedores em slides
+      const groupedSellers = sellers.reduce((acc, seller, index) => {
+        const slideIndex = Math.floor(index / itemsPerSlide);
+        if (!acc[slideIndex]) {
+          acc[slideIndex] = [];
+        }
+        acc[slideIndex].push(seller);
+        return acc;
+      }, []);
+
+      // Cria os slides e indicadores
+      groupedSellers.forEach((sellerGroup, index) => {
+        // Cria o indicador
+        const indicator = document.createElement('button');
+        indicator.type = 'button';
+        indicator.setAttribute('data-bs-target', '#best-sellers-carousel');
+        indicator.setAttribute('data-bs-slide-to', index);
+        if (index === 0) {
+          indicator.classList.add('active');
+          indicator.setAttribute('aria-current', 'true');
+        }
+        indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+        indicators.appendChild(indicator);
+
+        // Cria o slide
+        const slide = document.createElement('div');
+        slide.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+        
+        const slideContent = document.createElement('div');
+        slideContent.className = 'd-flex';
+        
+        // Preenche com cards vazios se necessário
+        const paddedGroup = [...sellerGroup];
+        while (paddedGroup.length < itemsPerSlide) {
+          paddedGroup.push(null);
+        }
+        
+        paddedGroup.forEach(seller => {
+          if (seller) {
+            const sellerCard = document.createElement('seller-card');
+            sellerCard.seller = seller;
+            slideContent.appendChild(sellerCard);
+          } else {
+            // Adiciona um espaço vazio para manter o layout
+            const emptySpace = document.createElement('div');
+            emptySpace.style.width = 'calc(25% - 20px)';
+            slideContent.appendChild(emptySpace);
+          }
+        });
+
+        slide.appendChild(slideContent);
+        carouselInner.appendChild(slide);
+      });
+
+      // Inicializa o carrossel
+      const bsCarousel = new window.bootstrap.Carousel(carousel, {
         interval: 5000,
         wrap: true,
         touch: true
       });
     }
-  }, []);
+  }, [sellers]);
 
   return (
     <div id="best-sellers-section" className="container my-5">
       <h2 className="mb-4">Melhores Vendedores</h2>
       
       <div id="best-sellers-carousel" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-indicators">
-          {groupedSellers.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              data-bs-target="#best-sellers-carousel"
-              data-bs-slide-to={index}
-              className={index === 0 ? "active" : ""}
-              aria-current={index === 0 ? "true" : "false"}
-              aria-label={`Slide ${index + 1}`}
-            ></button>
-          ))}
-        </div>
-
-        <div className="carousel-inner">
-          {groupedSellers.map((sellerGroup, index) => (
-            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-              <div className="d-flex justify-content-between">
-                {sellerGroup.map(seller => (
-                  <SellerCard key={seller.id} seller={seller} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="carousel-indicators custom-indicators"></div>
+        <div className="carousel-inner" id="best-sellers-carousel-inner"></div>
         
-        <button className="carousel-control-prev" type="button" data-bs-target="#best-sellers-carousel" data-bs-slide="prev">
+        <button className="carousel-control-prev custom-control" type="button" data-bs-target="#best-sellers-carousel" data-bs-slide="prev">
           <span className="carousel-control-prev-icon"></span>
           <span className="visually-hidden">Anterior</span>
         </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#best-sellers-carousel" data-bs-slide="next">
+        <button className="carousel-control-next custom-control" type="button" data-bs-target="#best-sellers-carousel" data-bs-slide="next">
           <span className="carousel-control-next-icon"></span>
           <span className="visually-hidden">Próximo</span>
         </button>
