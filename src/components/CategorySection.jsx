@@ -1,5 +1,4 @@
-import React from 'react';
-import { BiMoisture } from 'react-icons/bi';
+import { BiWater } from 'react-icons/bi';
 import tractorIcon from '../assets/images/tractor.png';
 import droneIcon from '../assets/images/drone.png';
 import soilIcon from '../assets/images/soil.png';
@@ -12,7 +11,7 @@ import agricultureIcon from '../assets/images/agriculture.png';
 
 const categories = [
   { icon: tractorIcon, title: 'Máquinas de\nPlantio e Colheita', type: 'img' },
-  { icon: BiMoisture, title: 'Equipamento\nde Irrigação', type: 'component' },
+  { icon: BiWater, title: 'Equipamento\nde Irrigação', type: 'component' },
   { icon: droneIcon, title: 'Tecnologia de Monitoramento', type: 'img' },
   { icon: soilIcon, title: 'Implemento\nde Solo', type: 'img' },
   { icon: hoeIcon, title: 'Ferramenta\nde Manutenção', type: 'img' },

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { ProductModel } from '../models/products/product_model';
-import { BiStar, BiGeoAlt } from 'react-icons/bi';
+import { BiStar, BiLocationPlus } from 'react-icons/bi';
 
 const ProductCard = ({ product }) => {
   return (
@@ -33,7 +34,7 @@ const ProductCard = ({ product }) => {
             </div>
             <div className="d-flex justify-content-between text-muted small">
               <div className="d-flex">
-                <BiGeoAlt className="color-custom-primary fs-product-card-location-icon" />
+                <BiLocationPlus className="color-custom-primary fs-product-card-location-icon" />
                 <span className="fs-product-card-location">{product.location}</span>
               </div>
               <span className="fs-product-card-units">
@@ -45,6 +46,20 @@ const ProductCard = ({ product }) => {
       </a>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    image: PropTypes.string,
+    rating: PropTypes.number.isRequired,
+    location: PropTypes.string.isRequired,
+    is_available: PropTypes.bool.isRequired,
+    available_units: PropTypes.number.isRequired
+  }).isRequired
 };
 
 const ProductListSection = () => {
