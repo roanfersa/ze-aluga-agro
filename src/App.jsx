@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/home/HomePage'
-import SignInPage from './pages/signin/signinpage'
+import SignInPage from './pages/signin/SignInPage'
 import SupportPage from './pages/support/SupportPage'
 
 function App() {
