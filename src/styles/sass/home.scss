@@ -1,4 +1,4 @@
-@use "global";
+@use "global" as *;
 
 /* HERO SECTION */
 
@@ -79,17 +79,32 @@
 .category_btn {
   width: 138px;
   height: 138px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   > i,
   > img {
     width: 60px;
     height: 60px;
-    margin: 0 auto;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
     background-color: #F9F9F9;
     border-radius: 50%;
     color: #003321;
-    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    aspect-ratio: 1;
+    object-fit: contain;
   }
 
   > i {
@@ -97,21 +112,75 @@
   }
 
   > p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
-    color: #000;
-    margin: 10px auto;
+    color: $text-dark;
+    margin: 0;
+    text-align: center;
+    line-height: 1.3;
+    white-space: pre-line;
   }
 }
 
 /* PRODUCT CARD */
 
 .product-card {
-  border: solid 1px #dddd;
-  transition: transform 0.2s;
+  border: 1px solid rgba($secondary-color, 0.1);
+  transition: all 0.2s ease;
+  height: 100%;
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    background-color: #f8f9fa;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .fs-custom-category {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .fs-product-card-title {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 44px;
+  }
+
+  .fs-product-card-price {
+    font-size: 18px !important;
+    margin-bottom: 0;
+  }
+
+  .fs-product-card-location {
+    font-size: 12px;
+    margin-left: 4px;
+  }
+
+  .fs-product-card-location-icon {
+    font-size: 14px;
+  }
+
+  .fs-product-card-units {
+    font-size: 12px;
+  }
+
+  .badge {
+    padding: 6px 8px;
+    font-weight: 500;
   }
 }
 

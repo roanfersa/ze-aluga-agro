@@ -3,26 +3,43 @@ import { useParams } from 'react-router-dom';
 import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/light.css';
 import '../styles/css/product_page.css';
+import { ProductModel } from '../models/products/product_model';
+import productsData from '../data/products.json';
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedDates, setSelectedDates] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(0);
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const loadProduct = () => {
       try {
-        const response = await fetch('/json/products.json');
-        const products = await response.json();
-        const foundProduct = products.find(p => p.id === parseInt(id));
-        setProduct(foundProduct);
+        const productModels = productsData.map(product => ProductModel.fromJson(product));
+        const foundProduct = productModels.find(p => p.id === parseInt(id));
+        
+        if (foundProduct) {
+          // Pré-carrega as imagens
+          const preloadImages = (urls) => {
+            urls.forEach(url => {
+              const img = new Image();
+              img.src = url;
+            });
+          };
+          
+          if (foundProduct.images && foundProduct.images.length > 0) {
+            preloadImages(foundProduct.images);
+          }
+        }
+        
+        setProduct(foundProduct || null);
       } catch (error) {
         console.error('Erro ao carregar o produto:', error);
       }
     };
 
-    fetchProduct();
+    loadProduct();
   }, [id]);
 
   const handleQuantityChange = (increment) => {
@@ -30,6 +47,10 @@ const ProductPage = () => {
       const newValue = prev + increment;
       return newValue >= 1 ? newValue : 1;
     });
+  };
+
+  const handleImageClick = (index) => {
+    setSelectedImage(index);
   };
 
   const capitalizeFirstLetter = (string) => {
@@ -56,16 +77,63 @@ const ProductPage = () => {
     );
   };
 
+  const calculateDiscountPrice = (price, discountPercentage) => {
+    const numericPrice = parseFloat(price.replace('R$', '').replace('.', '').replace(',', '.'));
+    const discountPrice = numericPrice - (numericPrice * (discountPercentage / 100));
+    return `R$ ${discountPrice.toFixed(2).replace('.', ',')}`;
+  };
+
+  // Garante que sempre temos uma imagem para exibir
+  const defaultImage = `https://placehold.co/800x600/003321/DCFFD7/png?text=${encodeURIComponent(product.name)}`;
+  const mainImage = product.images && product.images.length > 0 
+    ? product.images[selectedImage] 
+    : defaultImage;
+  
+  // Para as miniaturas, vamos usar um tamanho menor
+  const getThumbnailUrl = (url) => {
+    if (!url) return defaultImage;
+    if (typeof url === 'string' && url.includes('placehold.co')) {
+      return url.replace('800x600', '150x150');
+    }
+    return url;
+  };
+
+  const thumbnails = product.images && product.images.length > 0
+    ? product.images.map(img => getThumbnailUrl(img))
+    : [getThumbnailUrl(defaultImage)];
+
   return (
     <div className="container my-5">
       <div className="row">
         {/* Seção de Imagens */}
         <div className="col-md-5">
-          <img src="https://via.placeholder.com/400" alt="Produto Principal" className="product-image mb-3" />
-          <div>
-            <img src="https://via.placeholder.com/60" alt="Thumbnail 1" className="thumbnail-image" />
-            <img src="https://via.placeholder.com/60" alt="Thumbnail 2" className="thumbnail-image" />
-            <img src="https://via.placeholder.com/60" alt="Thumbnail 3" className="thumbnail-image" />
+          <div className="image-container">
+            <img 
+              src={mainImage} 
+              alt={product.name} 
+              className="product-image mb-3" 
+              loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = defaultImage;
+              }}
+            />
+          </div>
+          <div className="thumbnail-container">
+            {thumbnails.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`${product.name} - Imagem ${index + 1}`}
+                className={`thumbnail-image ${selectedImage === index ? 'active' : ''}`}
+                onClick={() => handleImageClick(index)}
+                loading="lazy"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = getThumbnailUrl(defaultImage);
+                }}
+              />
+            ))}
           </div>
         </div>
 
@@ -81,10 +149,21 @@ const ProductPage = () => {
           <h2 className="product-title text-custom-primary font-family-primary fw-bold fs-font-headings-product-page">
             {product.name}
           </h2>
-          <p><span className="text-warning">★ ★ ★ ★ ☆</span> (4.7)</p>
-          <p className="price text-custom-primary font-family-primary fw-bold fs-font-headings">
-            {product.price}
-          </p>
+          <p><span className="text-warning">★ ★ ★ ★ ☆</span> ({product.rating})</p>
+          
+          {product.has_discount ? (
+            <>
+              <p className="text-muted text-decoration-line-through mb-0">{product.price}</p>
+              <p className="price text-custom-primary font-family-primary fw-bold fs-font-headings">
+                {calculateDiscountPrice(product.price, product.discount_percentage)}
+              </p>
+            </>
+          ) : (
+            <p className="price text-custom-primary font-family-primary fw-bold fs-font-headings">
+              {product.price}
+            </p>
+          )}
+          
           <p>Produto revisado e aprovado pelo <b>Zé Aluga</b></p>
 
           {/* Opções */}
@@ -140,11 +219,20 @@ const ProductPage = () => {
 
           {/* Informações do Vendedor */}
           <div className="seller-info">
-            <img src="https://via.placeholder.com/50" alt="Seller Logo" className="rounded-circle me-2" />
+            <img 
+              src={`https://placehold.co/80x80/003321/DCFFD7/png?text=ZA`} 
+              alt="Logo do Vendedor" 
+              className="rounded-circle me-2"
+              loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = `https://placehold.co/80x80/003321/DCFFD7/png?text=ZA`;
+              }}
+            />
             <div>
-              <h6>Tudo para sua fazenda</h6>
-              <p className="text-muted">Verificado ✓</p>
-              <button className="btn btn-outline-primary btn-sm">Seguir</button>
+              <h6 className="mb-1 text-custom-primary">Tudo para sua fazenda</h6>
+              <p className="text-muted mb-2"><i className="bi bi-patch-check-fill text-custom-primary"></i> Verificado</p>
+              <button className="btn btn-outline-custom-primary btn-sm">Seguir</button>
             </div>
           </div>
         </div>

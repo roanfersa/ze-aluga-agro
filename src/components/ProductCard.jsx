@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import '../styles/css/home.css';
 import '../styles/css/custom_styles.css';
+import '../styles/css/product_card.css';
 
 const ProductCard = ({ product }) => {
   const calculateDiscountPrice = (price, discountPercentage) => {
@@ -9,15 +11,26 @@ const ProductCard = ({ product }) => {
     return `R$ ${discountPrice.toFixed(2).replace('.', ',')}`;
   };
 
+  // Garante que sempre temos uma imagem para exibir
+  const defaultImage = `https://placehold.co/800x600/003321/DCFFD7/png?text=${encodeURIComponent(product.name)}`;
+  const mainImage = product.image || defaultImage;
+
   return (
     <div className="col">
-      <a href={`/product/${product.id}`} className="text-decoration-none">
+      <Link to={`/produto/${product.id}`} className="text-decoration-none">
         <div className="card product-card shadow-sm rounded-3 h-100">
-          <img 
-            src={product.image || 'https://via.placeholder.com/150'} 
-            className="card-img-top" 
-            alt={product.name}
-          />
+          <div className="product-card-image-container">
+            <img 
+              src={mainImage} 
+              className="card-img-top product-card-image" 
+              alt={product.name}
+              loading="lazy"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = defaultImage;
+              }}
+            />
+          </div>
           <div className="card-body">
             <div className="text-start">
               <span className="badge bg-custom-secondary text-custom-primary fs-custom-category mb-2">
@@ -66,7 +79,7 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

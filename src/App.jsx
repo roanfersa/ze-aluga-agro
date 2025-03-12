@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/home/HomePage'
 import SignInPage from './pages/signin/SignInPage'
 import SupportPage from './pages/support/SupportPage'
@@ -11,6 +11,7 @@ function App() {
       <Route path="/signin" element={<SignInPage/>}/>
       <Route path="/support" element={<SupportPage/>}/>
       <Route path="/produto/:id" element={<ProductPage />} />
+      <Route path="/product/:id" element={<Navigate to={location => `/produto/${location.pathname.split('/').pop()}`} />} />
     </Routes>
   )
 }

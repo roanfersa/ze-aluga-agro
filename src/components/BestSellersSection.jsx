@@ -14,14 +14,29 @@ class SellerCardComponent extends HTMLElement {
     }
 
     render(seller) {
+        const defaultBanner = `https://placehold.co/800x200/003321/DCFFD7/png?text=${encodeURIComponent(seller.store_name)}`;
+        const defaultProfile = `https://placehold.co/150x150/003321/DCFFD7/png?text=${encodeURIComponent(seller.name.charAt(0))}`;
+        
         this.shadowRoot.innerHTML = `
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/src/styles/css/home.css">
         <link rel="stylesheet" href="/src/styles/css/custom_styles.css">
 
         <div class="card">
-            <img src="${seller.banner || 'https://via.placeholder.com/150'}" alt="Banner" class="banner">
-            <img src="${seller.profile_picture || 'https://via.placeholder.com/80'}" alt="Foto de Perfil" class="profile-pic">
+            <img 
+                src="${seller.banner || defaultBanner}" 
+                alt="Banner" 
+                class="banner"
+                loading="lazy"
+                onerror="this.src='${defaultBanner}'"
+            >
+            <img 
+                src="${seller.profile_picture || defaultProfile}" 
+                alt="Foto de Perfil" 
+                class="profile-pic"
+                loading="lazy"
+                onerror="this.src='${defaultProfile}'"
+            >
             <div class="card-body">
                 <div class="store-name">${seller.store_name}</div>
                 <div class="seller-name">por ${seller.name}</div>

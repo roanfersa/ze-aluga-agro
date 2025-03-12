@@ -4,73 +4,286 @@
 #header {
   flex-direction: row;
   height: 72px;
-}
+  background-color: $primary-color;
+  box-shadow: 0 1px 0 rgba($secondary-color, 0.1);
 
-// Logo
-#logo {
-  width: 128px;
-  height: 60px;
-}
-
-// Localização
-#location {
-  width: 175px;
-
-  &__icon {
-    width: 14px;
-    height: 14px;
-    margin: auto;
+  .container-fluid {
+    padding: 0 2rem;
+    height: 100%;
   }
 
-  &__city {
-    color: $primary-color;
-    font-size: 14px;
-    margin: auto;
+  .w-100 {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
-}
 
-// Links de Login
-#logs {
-  a {
-    text-decoration: none;
+  // Logo e Localização dentro do header
+  .d-flex.align-items-center {
+    gap: 2rem;
+    height: 100%;
   }
-}
 
-// Resultados de Pesquisa
-#search-results {
-  max-height: 200px;
-  overflow-y: auto;
-  background-color: white;
-  border: 1px solid #ccc;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  width: 100%;
-  display: none; 
+  // Logo
+  #logo {
+    width: 128px;
+    height: 60px;
+  }
 
-  li {
+  // Localização
+  #location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     cursor: pointer;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    color: $text-dark;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    width: 175px;
+
+    &__icon {
+      width: 14px;
+      height: 14px;
+      margin: auto;
+    }
+
+    &__city {
+      color: $secondary-color;
+      font-size: 14px;
+      margin: auto;
+    }
 
     &:hover {
-      background-color: #f0f0f0;
-      color: $text-dark;
+      background-color: rgba($secondary-color, 0.1);
+    }
+  }
+
+  // Campo de Busca
+  .col-md-6.d-flex {
+    max-width: 580px;
+    flex: 1;
+    height: 44px;
+    margin: 0 2rem;
+  }
+
+  .input-group {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    border: 1px solid rgba($secondary-color, 0.2);
+
+    &:focus-within {
+      border-color: $secondary-color;
+      box-shadow: 0 0 0 2px rgba($secondary-color, 0.1);
+    }
+  }
+
+  #search-input {
+    height: 100%;
+    width: 100%;
+    border: none !important;
+    background: #fff !important;
+    padding: 0 16px;
+    font-size: 14px;
+    color: $text-dark !important;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: rgba($text-dark, 0.5);
+      font-size: 14px;
+    }
+  }
+
+  .input-group-text {
+    width: 44px;
+    height: 100%;
+    border: none !important;
+    background: #fff !important;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba($secondary-color, 0.1);
+    transition: all 0.2s ease;
+
+    i {
+      color: $secondary-color;
+      font-size: 18px;
+      transition: transform 0.2s ease;
+
+      &.rotating {
+        animation: rotate 1s linear infinite;
+      }
+    }
+
+    &:hover {
+      background: rgba($secondary-color, 0.05) !important;
+      i {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // Links de Login
+  #logs {
+    display: flex;
+    gap: 0.75rem;
+
+    a {
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+
+      &.bg-custom-secondary {
+        background: $secondary-color;
+        color: $primary-color;
+        border: none;
+
+        &:hover {
+          background: rgba($secondary-color, 0.9);
+        }
+      }
+
+      &:not(.bg-custom-secondary) {
+        background: transparent;
+        color: $secondary-color;
+        border: 1px solid $secondary-color;
+
+        &:hover {
+          background: rgba($secondary-color, 0.1);
+        }
+      }
+    }
+  }
+
+  // Botão Zé Busca
+  .btn.outline-custom-secondary {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    color: $secondary-color;
+    border: 1px solid $secondary-color;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba($secondary-color, 0.1);
+    }
+  }
+
+  // Resultados de Pesquisa
+  #search-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    border: 1px solid rgba($secondary-color, 0.1);
+
+    &.show {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    li {
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba($secondary-color, 0.1);
+      transition: all 0.2s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: rgba($secondary-color, 0.05);
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+
+      .flex-grow-1 {
+        .fw-bold {
+          color: $text-dark;
+          font-size: 14px;
+          margin-bottom: 2px;
+        }
+
+        small {
+          color: rgba($text-dark, 0.6);
+          font-size: 12px;
+        }
+      }
+
+      .text-muted {
+        font-size: 12px;
+        color: rgba($text-dark, 0.5) !important;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba($secondary-color, 0.2);
+      border-radius: 3px;
+
+      &:hover {
+        background: rgba($secondary-color, 0.3);
+      }
     }
   }
 }
 
-// Botão "Zé Busca"
-#zeBuscaBtn {
-  &:hover {
-    background-color: $primary-color;
-    color: $text-light;
-    margin: 2px;
-    box-shadow: $box-shadow;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

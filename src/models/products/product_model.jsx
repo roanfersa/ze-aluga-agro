@@ -15,7 +15,8 @@ export class ProductModel {
     location,
     description,
     technical_details,
-    image
+    image,
+    images = []
   ) {
     this.id = id;
     this.category = category;
@@ -30,7 +31,17 @@ export class ProductModel {
     this.location = location;
     this.description = description;
     this.technical_details = technical_details;
-    this.image = image;
+    
+    // Tratamento das imagens
+    const defaultImage = `https://placehold.co/800x600/003321/DCFFD7/png?text=${encodeURIComponent(name)}`;
+    this.image = image || defaultImage;
+    
+    // Mantém a ordem das imagens e adiciona a imagem principal se não estiver presente
+    this.images = Array.isArray(images) && images.length > 0 
+      ? images.includes(image) 
+        ? images 
+        : [image, ...images]
+      : [this.image];
   }
 
   static fromJson(json) {
@@ -50,7 +61,8 @@ export class ProductModel {
       json.technical_details instanceof TechnicalDetailsModel
         ? json.technical_details
         : TechnicalDetailsModel.fromJson(json.technical_details),
-      json.image
+      json.image,
+      json.images
     );
   }
 }

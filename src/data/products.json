@@ -17,7 +17,13 @@
       "power_requirement": "80 CV",
       "capacity": "300 kg",
       "weight": "2000 kg"
-    }
+    },
+    "image": "https://placehold.co/800x600/003321/DCFFD7/png?text=Plantadeira+A",
+    "images": [
+      "https://placehold.co/800x600/003321/DCFFD7/png?text=Plantadeira+A",
+      "https://placehold.co/800x600/003321/DCFFD7/png?text=Plantadeira+A+Vista+2",
+      "https://placehold.co/800x600/003321/DCFFD7/png?text=Plantadeira+A+Vista+3"
+    ]
   },
   {
     "id": 2,
@@ -36,7 +42,13 @@
       "capacity": "600 kg/h",
       "dimensions": "6 x 3 x 3.5 metros",
       "weight": "3200 kg"
-    }
+    },
+    "image": "https://placehold.co/800x600/003321/DCFFD7/png?text=Colheitadeira+B",
+    "images": [
+      "https://placehold.co/800x600/003321/DCFFD7/png?text=Colheitadeira+B",
+      "https://placehold.co/800x600/003321/DCFFD7/png?text=Colheitadeira+B+Vista+2",
+      "https://placehold.co/800x600/003321/DCFFD7/png?text=Colheitadeira+B+Vista+3"
+    ]
   },
   {
     "id": 3,
