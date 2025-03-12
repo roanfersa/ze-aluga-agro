@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Flatpickr from 'react-flatpickr';
 import 'flatpickr/dist/themes/light.css';
-import '../styles/sass/product_page.scss';
+import '../styles/css/product_page.css';
 
 const ProductPage = () => {
   const { id } = useParams();
