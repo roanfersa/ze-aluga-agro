@@ -129,7 +129,7 @@ function HeaderComponent() {
     <div id="header" className="container-fluid bg-custom-primary text-white">
       <div className="w-100 py-3 d-flex align-items-center justify-content-between">
         {/* Logo e Localização */}
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center col-md-3">
           <Link to="/">
             <img
               id="logo"
@@ -149,101 +149,103 @@ function HeaderComponent() {
         </div>
 
         {/* Campo de Busca */}
-        <div className="col-md-6 d-flex px-2" ref={searchRef}>
-          <div className="input-group position-relative w-100">
-            <input
-              ref={inputRef}
-              type="text"
-              id="search-input"
-              className="form-control"
-              placeholder="O que você precisa para fazer seu negócio crescer?"
-              value={searchTerm}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              onFocus={() => searchTerm.length >= 2 && setShowResults(true)}
-            />
-            <button 
-              className="input-group-text bg-white border-0"
-              onClick={() => inputRef.current?.focus()}
-            >
-              {loading ? (
-                <i className="bi bi-arrow-clockwise rotating"></i>
-              ) : (
-                <i className="bi bi-search"></i>
-              )}
-            </button>
-            
-            {/* Resultados da Busca */}
-            {showResults && (
-              <ul id="search-results" className="show">
-                {searchResults.length === 0 ? (
-                  <li className="text-center py-3">
-                    <small className="text-muted">
-                      {searchTerm.length < 2 
-                        ? "Digite pelo menos 2 caracteres" 
-                        : "Nenhum resultado encontrado"}
-                    </small>
-                  </li>
+        <div className="col-md-5" ref={searchRef}>
+          <div className="d-flex position-relative">
+            <div className="input-group">
+              <input
+                ref={inputRef}
+                type="text"
+                id="search-input"
+                className="form-control"
+                placeholder="O que você precisa para fazer seu negócio crescer?"
+                value={searchTerm}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+                onFocus={() => searchTerm.length >= 2 && setShowResults(true)}
+              />
+              <button 
+                className="btn bg-white border-start-0"
+                onClick={() => inputRef.current?.focus()}
+              >
+                {loading ? (
+                  <i className="bi bi-arrow-clockwise rotating"></i>
                 ) : (
-                  searchResults.map(({ item, relevance }) => (
-                    <li 
-                      key={item.id}
-                      onClick={() => handleProductClick(item.id)}
-                      className="d-flex align-items-center py-2 px-3"
-                    >
-                      <img 
-                        src={item.image || `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(item.name.charAt(0))}`}
-                        alt={item.name}
-                        className="me-2 rounded"
-                        style={{ width: "50px", height: "50px" }}
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(item.name.charAt(0))}`;
-                        }}
-                      />
-                      <div className="flex-grow-1">
-                        <div 
-                          className="fw-bold text-custom-primary"
-                          dangerouslySetInnerHTML={{ 
-                            __html: highlightText(item.name, searchTerm) 
+                  <i className="bi bi-search"></i>
+                )}
+              </button>
+              
+              {/* Resultados da Busca */}
+              {showResults && (
+                <ul id="search-results" className="show">
+                  {searchResults.length === 0 ? (
+                    <li className="text-center py-3">
+                      <small className="text-muted">
+                        {searchTerm.length < 2 
+                          ? "Digite pelo menos 2 caracteres" 
+                          : "Nenhum resultado encontrado"}
+                      </small>
+                    </li>
+                  ) : (
+                    searchResults.map(({ item, relevance }) => (
+                      <li 
+                        key={item.id}
+                        onClick={() => handleProductClick(item.id)}
+                        className="d-flex align-items-center py-2 px-3"
+                      >
+                        <img 
+                          src={item.image || `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(item.name.charAt(0))}`}
+                          alt={item.name}
+                          className="me-2 rounded"
+                          style={{ width: "50px", height: "50px" }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(item.name.charAt(0))}`;
                           }}
                         />
-                        <small 
-                          className="text-muted d-block"
-                          dangerouslySetInnerHTML={{ 
-                            __html: highlightText(item.category, searchTerm) 
-                          }}
-                        />
-                        {item.description && (
-                          <small 
-                            className="text-muted d-block text-truncate"
-                            style={{ maxWidth: "300px" }}
+                        <div className="flex-grow-1">
+                          <div 
+                            className="fw-bold text-custom-primary"
                             dangerouslySetInnerHTML={{ 
-                              __html: highlightText(item.description, searchTerm) 
+                              __html: highlightText(item.name, searchTerm) 
                             }}
                           />
-                        )}
-                      </div>
-                      <div className="ms-2 text-end">
-                        <small className="text-muted d-block">
-                          {relevance}% relevante
-                        </small>
-                        {item.has_discount && (
-                          <span className="badge bg-danger">
-                            -{item.discount_percentage}%
-                          </span>
-                        )}
-                      </div>
-                    </li>
-                  ))
-                )}
-              </ul>
-            )}
+                          <small 
+                            className="text-muted d-block"
+                            dangerouslySetInnerHTML={{ 
+                              __html: highlightText(item.category, searchTerm) 
+                            }}
+                          />
+                          {item.description && (
+                            <small 
+                              className="text-muted d-block text-truncate"
+                              style={{ maxWidth: "300px" }}
+                              dangerouslySetInnerHTML={{ 
+                                __html: highlightText(item.description, searchTerm) 
+                              }}
+                            />
+                          )}
+                        </div>
+                        <div className="ms-2 text-end">
+                          <small className="text-muted d-block">
+                            {relevance}% relevante
+                          </small>
+                          {item.has_discount && (
+                            <span className="badge bg-danger">
+                              -{item.discount_percentage}%
+                            </span>
+                          )}
+                        </div>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
 
         {/* Ícones e Usuário */}
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center col-md-4">
           <div className="dropdown me-2">
             <Link
               to="/advance_search"
