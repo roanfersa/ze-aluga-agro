@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import FavoriteButton from './FavoriteButton';
 import '../styles/css/home.css';
 import '../styles/css/custom_styles.css';
 import '../styles/css/product_card.css';
@@ -15,10 +16,22 @@ const ProductCard = ({ product }) => {
   const defaultImage = `https://placehold.co/800x600/003321/DCFFD7/png?text=${encodeURIComponent(product.name)}`;
   const mainImage = product.image || defaultImage;
 
+  const handleFavoriteClick = (e) => {
+    e.preventDefault(); // Previne a navegação quando clicar no botão de favorito
+    e.stopPropagation(); // Previne a propagação do evento para o card
+  };
+
   return (
     <div className="col">
-      <Link to={`/produto/${product.id}`} className="text-decoration-none">
-        <div className="card product-card shadow-sm rounded-3 h-100">
+      <div className="card product-card shadow-sm rounded-3 h-100">
+        <div className="favorite-button-wrapper">
+          <FavoriteButton 
+            productId={product.id} 
+            productName={product.name}
+            onClick={handleFavoriteClick}
+          />
+        </div>
+        <Link to={`/produto/${product.id}`} className="text-decoration-none">
           <div className="product-card-image-container">
             <img 
               src={mainImage} 
@@ -78,8 +91,8 @@ const ProductCard = ({ product }) => {
               </span>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };

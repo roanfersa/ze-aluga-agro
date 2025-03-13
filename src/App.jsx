@@ -3,6 +3,7 @@ import HomePage from './pages/home/HomePage'
 import SignInPage from './pages/signin/SignInPage'
 import SupportPage from './pages/support/SupportPage'
 import ProductPage from './pages/ProductPage'
+import Favorites from './pages/Favorites'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/support" element={<SupportPage/>}/>
       <Route path="/produto/:id" element={<ProductPage />} />
       <Route path="/product/:id" element={<Navigate to={location => `/produto/${location.pathname.split('/').pop()}`} />} />
+      <Route path="/favoritos" element={<Favorites />} />
     </Routes>
   )
 }

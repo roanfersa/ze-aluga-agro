@@ -245,20 +245,26 @@ function HeaderComponent() {
         </div>
 
         {/* Ícones e Usuário */}
-        <div className="d-flex align-items-center col-md-4">
-          <div className="dropdown me-2">
+        <div className="d-flex align-items-center justify-content-end col-md-4">
+          <div className="d-flex align-items-center gap-1">
+            <Link
+              to="/favoritos"
+              className="btn outline-custom-secondary text-custom-secondary"
+            >
+              <i className="bi bi-heart me-2"></i>
+              Favoritos
+            </Link>
+            
             <Link
               to="/advance_search"
               className="btn outline-custom-secondary text-custom-secondary"
             >
               Zé Busca
             </Link>
-          </div>
 
-          <div id="logs" className="d-flex align-items-center">
             <Link
               to="/signin"
-              className="btn bg-custom-secondary text-custom-primary me-2"
+              className="btn bg-custom-secondary text-custom-primary"
             >
               Entrar
             </Link>
