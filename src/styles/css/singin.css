@@ -1,359 +1,208 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-a {
-  text-decoration: none;
-}
-
-.color-custom-primary {
-  color: #003321;
-}
-
-.color-custom-secondary {
-  color: #DCFFD7;
-}
-
-.bg-custom-primary {
-  background-color: #003321;
-}
-
-.bg-custom-secondary {
-  background-color: #DCFFD7;
-}
-
-.bg-icon-color {
-  background-color: #F9F9F9;
-}
-
-.outline-custom-primary {
-  border-color: #003321;
-}
-
-.outline-custom-secondary {
-  border-color: #DCFFD7;
-}
-
-.text-custom-primary {
-  color: #003321;
-}
-
-.text-custom-secondary {
-  color: #DCFFD7;
-}
-
-.text-custom-tertiary {
-  color: #5C6C7B;
-}
-
-.font-family-primary {
-  font-family: "Raleway", sans-serif;
-}
-
-.font-family-secondary {
-  font-family: "Inter", sans-serif;
-}
-
-.fs-font-headings {
-  font-size: 24px;
-}
-
-.fs-font-headings-product-page {
-  font-size: 32px !important;
-}
-
-.fs-product-card-title {
-  font-size: 14px;
-}
-
-.fs-product-card-price {
-  font-size: 16px;
-}
-
-.fs-product-card-location-icon {
-  font-size: 10px;
-}
-
-.fs-product-card-location {
-  font-size: 10px;
-}
-
-.fs-product-card-units {
-  font-size: 10px;
-}
-
-.fs-custom-category {
-  font-size: 10px !important;
-}
-
-.form-check-input:checked {
-  background-color: #003321;
-  border-color: #003321;
-}
-
-.seller-card {
-  width: 300px;
-  margin: 0 10px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-  flex-shrink: 0;
-}
-.seller-card .banner {
-  width: 100%;
-  height: 100px;
-  object-fit: cover;
-}
-.seller-card .profile-pic {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 4px solid white;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 60px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.seller-card .card-body {
-  padding: 3rem 1rem 1rem;
-  text-align: center;
-}
-.seller-card .store-name {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-.seller-card .seller-name {
-  color: #DCFFD7;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-.seller-card .stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-.seller-card .stats div {
-  text-align: center;
-  color: #DCFFD7;
-}
-.seller-card .stats span {
-  display: block;
-  font-weight: bold;
-  color: #212529;
-  margin-bottom: 0.25rem;
-}
-.seller-card .follow-button {
-  width: 100%;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #006400;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-.seller-card .follow-button:hover {
-  background-color: #003100;
-}
-
-#best-sellers-carousel {
-  padding: 0 2rem;
-  position: relative;
-}
-#best-sellers-carousel .carousel-inner {
-  padding: 1rem 0 3rem;
-  overflow: visible;
-}
-#best-sellers-carousel .carousel-item {
-  margin-right: 0;
-}
-#best-sellers-carousel .carousel-item .d-flex {
-  gap: 1rem;
-}
-#best-sellers-carousel .carousel-control-prev, #best-sellers-carousel .carousel-control-next {
-  width: 40px;
-  height: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  opacity: 0.8;
-}
-#best-sellers-carousel .carousel-control-prev:hover, #best-sellers-carousel .carousel-control-next:hover {
-  opacity: 1;
-}
-#best-sellers-carousel .carousel-control-prev {
-  left: -20px;
-}
-#best-sellers-carousel .carousel-control-next {
-  right: -20px;
-}
-#best-sellers-carousel .carousel-indicators {
-  bottom: -2rem;
-}
-#best-sellers-carousel .carousel-indicators button {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #dee2e6;
-  margin: 0 4px;
-  opacity: 0.5;
-}
-#best-sellers-carousel .carousel-indicators button.active {
-  background-color: #003321;
-  opacity: 1;
-}
-
-@media (max-width: 992px) {
-  .seller-card {
-    width: 250px;
-  }
-}
-@media (max-width: 768px) {
-  .seller-card {
-    width: 220px;
-  }
-}
-@media (max-width: 576px) {
-  #best-sellers-carousel .carousel-item .d-flex {
-    justify-content: center;
-  }
-  .seller-card {
-    width: 280px;
-  }
-}
 html, body, #root {
-  width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-#img-banner {
-  padding: 0px !important;
+.signin-wrapper {
+  min-height: 100vh;
+  background-color: #003321;
 }
 
-.card {
-  background-color: transparent !important;
+.signin-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-#form-card {
-  width: 418px;
-  height: 500px;
+.signin-banner {
+  height: 100%;
+  background-color: #e9ffe5;
+  position: relative;
+  overflow: hidden;
 }
 
-input {
-  background-color: transparent !important;
-  border-color: #DCFFD7;
-  margin-top: 12px;
-  color: #DCFFD7 !important;
+.signin-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-input::placeholder {
-  color: #DCFFD7 !important;
-  opacity: 1;
-}
-
-input:focus::placeholder {
-  color: #DCFFD7 !important;
-}
-
-input:focus {
-  border-color: #00FF00 !important;
-  box-shadow: 0 0 5px #00FF00 !important;
-}
-
-/* Position the dropdown icon on the right inside the input field */
-.dropdown-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #DCFFD7;
-  pointer-events: none;
-}
-
-/* Position the dropdown icon on the right inside the input field */
-.dropdown-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #DCFFD7;
-  pointer-events: none;
-}
-
-/* Ícone do dropdown no lado direito */
-.dropdown-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #DCFFD7;
-  pointer-events: none;
-}
-
-/* Ajuste no padding do input para evitar sobreposição com o ícone */
-#userTypeInput {
-  padding-right: 30px;
-}
-
-/* Ícone do dropdown no lado direito */
-.dropdown-icon {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #DCFFD7;
-  pointer-events: none;
-}
-
-.custom-checkbox {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #DCF5E6;
-  border-radius: 4px;
-  appearance: none;
+.signin-form-container {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  padding: 2rem;
 }
 
-.custom-checkbox:checked {
-  border-color: #DCF5E6;
+.signin-form-wrapper {
+  width: 100%;
+  max-width: 400px;
 }
 
-.custom-checkbox:checked::before {
-  color: #0d3a0c;
-  font-size: 1rem;
-  font-weight: bold;
-  display: inline-flex;
+.signin-logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.signin-logo {
+  height: 60px;
+  max-width: 100%;
+}
+
+.signin-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #DCFFD7;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.signin-subtitle {
+  color: #DCFFD7;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.signin-link {
+  color: #DCFFD7;
+  text-decoration: none !important;
+  font-weight: 600;
+}
+.signin-link:hover {
+  text-decoration: underline;
+  background-color: #DCFFD7;
+  padding: 14px;
+  border-radius: 8px;
+  color: #003321;
+}
+
+.signin-form {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.signin-input {
+  height: 50px;
+  padding: 0.75rem 1rem;
+  background-color: transparent !important;
+  border: 1px solid rgba(50, 251, 19, 0.7) !important;
+  border-radius: 6px;
+  color: #DCFFD7 !important;
+  transition: all 0.2s ease;
+}
+.signin-input:focus {
+  box-shadow: 0 0 0 3px rgba(50, 251, 19, 0.7) !important;
+  border-color: rgb(34, 255, 0) !important;
+  outline: none;
+}
+.signin-input::placeholder {
+  color: rgba(220, 255, 215, 0.7) !important;
+  opacity: 1;
+}
+
+.signin-cadastre {
+  background-color: #DCFFD7 !important;
+  border: none !important;
+  color: #003321 !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+.signin-cadastre:hover {
+  background-color: rgb(197.6875, 255, 189.5) !important;
+}
+
+.signin-btn {
+  height: 50px;
+  background-color: #DCFFD7 !important;
+  border: none !important;
+  color: #003321 !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+  border-radius: 6px;
+}
+.signin-btn:hover {
+  background-color: rgb(197.6875, 255, 189.5) !important;
+}
+
+.signin-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+}
+.signin-divider:before, .signin-divider:after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid rgba(220, 255, 215, 0.2);
+}
+.signin-divider span {
+  padding: 0 1rem;
+  color: #DCFFD7;
+  font-size: 0.9rem;
+}
+
+.social-login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-btn {
+  display: flex;
   align-items: center;
   justify-content: center;
+  height: 50px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.social-btn i {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
 }
 
-.form-check-label {
-  font-size: 13px;
-  color: #A3A3A3;
+.google-btn {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+}
+.google-btn:hover {
+  background-color: #f8f8f8;
 }
 
-.divider {
-  border-top: 1px solid #A3A3A3;
-  width: 100%;
-  margin-top: 16px;
-  margin-bottom: 8px;
+.facebook-btn {
+  background-color: #1877F2;
+  color: white;
+  border: none;
+}
+.facebook-btn:hover {
+  background-color: rgb(12.8135245902, 106.4508196721, 227.6864754098);
 }
 
-.terms-text {
-  font-size: 0.9rem;
-  color: #A3A3A3;
+.signin-forgot {
   text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 767px) {
+  .signin-form-container {
+    padding: 1.5rem;
+  }
+  .signin-title {
+    font-size: 1.75rem;
+  }
 }
 
 /*# sourceMappingURL=singin.css.map */
