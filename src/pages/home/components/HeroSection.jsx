@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import bannerBlack from '../assets/images/banner_2 1.png';
-import bannerHero from '../assets/images/banner_hero_01 1.png';
-import '../styles/css/home.css';
+import bannerBlack from "../../../assets/images/banner_2 1.png";
+import bannerHero from "../../../assets/images/banner_hero_01 1.png";
+import "../../../styles/css/home.css";
 
 const HeroSection = () => {
   useEffect(() => {
@@ -77,4 +77,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection; 
+export default HeroSection;

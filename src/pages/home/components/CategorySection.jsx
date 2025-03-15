@@ -1,14 +1,14 @@
-import tractorIcon from '../assets/images/tractor.png';
-import droneIcon from '../assets/images/drone.png';
-import soilIcon from '../assets/images/soil.png';
-import hoeIcon from '../assets/images/hoe.png';
-import fertilizerIcon from '../assets/images/fertilizer.png';
-import safetyHatIcon from '../assets/images/safety-hat.png';
-import creditIcon from '../assets/images/credit.png';
-import moneyIcon from '../assets/images/money.png';
-import agricultureIcon from '../assets/images/agriculture.png';
-import '../styles/css/home.css';
-import '../styles/css/custom_styles.css';
+import tractorIcon from "../../../assets/images/tractor.png";
+import droneIcon from "../../../assets/images/drone.png";
+import soilIcon from "../../../assets/images/soil.png";
+import hoeIcon from "../../../assets/images/hoe.png";
+import fertilizerIcon from "../../../assets/images/fertilizer.png";
+import safetyHatIcon from "../../../assets/images/safety-hat.png";
+import creditIcon from "../../../assets/images/credit.png";
+import moneyIcon from "../../../assets/images/money.png";
+import agricultureIcon from "../../../assets/images/agriculture.png";
+import "../../../styles/css/home.css";
+import "../../../styles/css/custom_styles.css";
 
 const categories = [
   { icon: tractorIcon, title: 'Máquinas de\nPlantio e Colheita', type: 'img' },
@@ -37,9 +37,9 @@ const CategorySection = () => {
               <a href="#">
                 <div className="category_btn col-md-2 me-3">
                   {category.type === 'img' ? (
-                    <img 
-                      className="d-flex align-items-center justify-content-center mb-1" 
-                      src={category.icon} 
+                    <img
+                      className="d-flex align-items-center justify-content-center mb-1"
+                      src={category.icon}
                       alt={category.title}
                     />
                   ) : (
@@ -58,4 +58,4 @@ const CategorySection = () => {
   );
 };
 
-export default CategorySection; 
+export default CategorySection;

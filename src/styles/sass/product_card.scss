@@ -1,4 +1,5 @@
 @use "global";
+@use "favorite_button";
 
 .product-card {
   transition: transform 0.2s ease-in-out;
@@ -46,6 +47,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-clamp: 2;
   }
 }
 
@@ -61,4 +63,4 @@
     max-width: 150px;
     display: inline-block;
   }
-} 
+}
