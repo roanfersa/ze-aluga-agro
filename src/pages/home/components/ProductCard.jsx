@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import FavoriteButton from './FavoriteButton';
-import '../styles/css/home.css';
-import '../styles/css/custom_styles.css';
-import '../styles/css/product_card.css';
+import "../../../styles/css/home.css";
+import "../../../styles/css/custom_styles.css";
+import "../../../styles/css/product_card.css";
 
 const ProductCard = ({ product }) => {
   const calculateDiscountPrice = (price, discountPercentage) => {
@@ -25,17 +25,17 @@ const ProductCard = ({ product }) => {
     <div className="col">
       <div className="card product-card shadow-sm rounded-3 h-100">
         <div className="favorite-button-wrapper">
-          <FavoriteButton 
-            productId={product.id} 
+          <FavoriteButton
+            productId={product.id}
             productName={product.name}
             onClick={handleFavoriteClick}
           />
         </div>
         <Link to={`/produto/${product.id}`} className="text-decoration-none">
           <div className="product-card-image-container">
-            <img 
-              src={mainImage} 
-              className="card-img-top product-card-image" 
+            <img
+              src={mainImage}
+              className="card-img-top product-card-image"
               alt={product.name}
               loading="lazy"
               onError={(e) => {
@@ -116,4 +116,4 @@ ProductCard.propTypes = {
   }).isRequired
 };
 
-export default ProductCard; 
+export default ProductCard;

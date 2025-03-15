@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ProductModel } from '../models/products/product_model';
-import productsData from '../data/products.json';
+import { ProductModel } from '../../../models/products/product_model';
+import productsData from "../../../data/products.json";
 import ProductCard from './ProductCard';
-import '../styles/css/home.css';
-import '../styles/css/custom_styles.css';
+import "../../../styles/css/home.css";
+import "../../../styles/css/custom_styles.css";
 
 const ProductListSection = () => {
   const [products, setProducts] = useState([]);
@@ -31,4 +31,4 @@ const ProductListSection = () => {
   );
 };
 
-export default ProductListSection; 
+export default ProductListSection;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/css/favorites.css';
+import '../../styles/css/favorites.css';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -44,7 +44,7 @@ const Favorites = () => {
             {favorites.map((product) => (
               <div key={product.id} className="favorite-card">
                 <div className="favorite-card-image">
-                  <img 
+                  <img
                     src={product.image || `https://placehold.co/300x200/003321/DCFFD7/png?text=${encodeURIComponent(product.name.charAt(0))}`}
                     alt={product.name}
                     onError={(e) => {
@@ -66,8 +66,8 @@ const Favorites = () => {
                   {product.description && (
                     <p className="description">{product.description}</p>
                   )}
-                  <Link 
-                    to={`/produto/${product.id}`} 
+                  <Link
+                    to={`/produto/${product.id}`}
                     className="btn btn-primary w-100"
                   >
                     Ver Detalhes
@@ -93,4 +93,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites; 
+export default Favorites;
