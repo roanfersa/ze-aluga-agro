@@ -323,4 +323,69 @@ html, body, #root {
   border-radius: 5px;
 }
 
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  color: #ff6b6b;
+  font-size: 0.875rem;
+}
+
+.signin-input.is-invalid {
+  border-color: #ff6b6b !important;
+}
+
+.signin-input.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.25) !important;
+}
+
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.25em;
+  vertical-align: top;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid rgba(220, 255, 215, 0.5);
+  appearance: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.form-check-input:checked {
+  background-color: #DCFFD7;
+  border-color: #DCFFD7;
+}
+
+.form-check-input:focus {
+  border-color: rgb(34, 255, 0);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(50, 251, 19, 0.25);
+}
+
+.form-check-input[type=radio] {
+  border-radius: 50%;
+}
+
+.form-check-input[type=radio]:checked {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23003321'/%3e%3c/svg%3e");
+}
+
+/* Terms and privacy links */
+.signin-link {
+  color: #DCFFD7;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.signin-link:hover {
+  text-decoration: underline;
+}
+
 /*# sourceMappingURL=singup.css.map */
