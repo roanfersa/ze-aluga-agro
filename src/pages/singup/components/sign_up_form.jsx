@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from 'react-toastify';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -78,12 +79,55 @@ const SignUpForm = () => {
 
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+
+      const errorMessage = Object.values(formErrors)[0];
+      toast.error(errorMessage, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+
       return;
     }
 
     console.log("Form submitted:", formData);
 
-    alert("Cadastro realizado com sucesso!");
+    try {
+      
+      toast.success('Cadastro realizado com sucesso!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored"
+      });
+      
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        password: "",
+        confirmPassword: "",
+        userType: "buyer",
+      });
+      
+    } catch (error) {
+      
+      toast.error('Erro ao realizar o cadastro. Por favor, tente novamente.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored"
+      });
+    }
   };
 
   return (
