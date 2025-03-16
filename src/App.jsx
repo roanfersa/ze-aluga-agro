@@ -5,6 +5,7 @@ import SignUpPage from "./pages/singup/sign_up_page"
 import SupportPage from "./pages/support/SupportPage";
 import ProductPage from "./pages/product_page/ProductPage";
 import Favorites from "./pages/favorite_page/Favorites";
+import AdvancedSearchPage from "./pages/advanced_search/advance_search_page";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         }
       />
       <Route path="/favoritos" element={<Favorites />} />
+      <Route path="/busca-avancada" element={<AdvancedSearchPage />} />
     </Routes>
   );
 }

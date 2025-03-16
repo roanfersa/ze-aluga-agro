@@ -1,0 +1,98 @@
+@use "global";
+
+// Advanced Search Page Styles
+.filters-sidebar {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 100%;
+
+  .filter-container {
+    position: sticky;
+    top: 20px;
+  }
+}
+
+// Responsive filters for mobile
+@media (max-width: 991px) {
+  .filters-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050;
+    overflow-y: auto;
+    background-color: white;
+    padding: 20px;
+
+    &.show {
+      display: block;
+    }
+  }
+}
+
+// Filter groups styles
+.filter-group {
+  label {
+    color: #003321;
+  }
+
+  .form-control,
+  .form-select {
+    border-color: #dee2e6;
+    border-radius: 6px;
+
+    &:focus {
+      border-color: #003321;
+      box-shadow: 0 0 0 0.25rem rgba(0, 51, 33, 0.25);
+    }
+  }
+
+  .form-check-input:checked {
+    background-color: #003321;
+    border-color: #003321;
+  }
+}
+
+// Active filters tags
+.filter-tag {
+  background-color: #DCFFD7;
+  color: #003321;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  .btn-close {
+    font-size: 0.75rem;
+    padding: 0;
+    margin-left: 5px;
+  }
+}
+
+// Products section layout
+.products-container {
+  padding: 0 15px;
+}
+
+// Empty results styling
+.empty-results {
+  padding: 40px 20px;
+
+  i {
+    color: #dee2e6;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
