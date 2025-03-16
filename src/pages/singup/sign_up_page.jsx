@@ -4,10 +4,25 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "../../styles/css/singin.css";
 import SignUpForm from "./components/sign_up_form";
 import SocialLoginButtons from "../signin/components/social_login_buttons";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUpPage() {
   return (
     <div className="signin-wrapper">
+
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <div className="signin-container">
         <div className="row g-0 h-100">
           <div className="col-md-6 d-none d-md-block signin-banner">
