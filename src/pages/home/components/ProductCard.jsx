@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div className="col">
-        <div className="card product-card shadow-sm rounded-3 h-100">
+        <div className="card product-card shadow-sm rounded-3 h-100 w-100">
           <div className="favorite-button-wrapper">
             <FavoriteButton
               productId={productModel.id}

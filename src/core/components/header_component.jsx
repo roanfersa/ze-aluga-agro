@@ -67,7 +67,7 @@ function HeaderComponent() {
         if (value.length >= 2) {
           // Realiza a busca com Fuse.js
           const results = fuse.search(value, { limit: 5 });
-          
+
           // Organiza os resultados por relevância
           const processedResults = results.map(({ item, score }) => ({
             item,
@@ -131,19 +131,10 @@ function HeaderComponent() {
         {/* Logo e Localização */}
         <div className="d-flex align-items-center col-md-3">
           <Link to="/">
-            <img
-              id="logo"
-              src={Logo}
-              alt="Logo"
-              className="me-3"
-            />
+            <img id="logo" src={Logo} alt="Logo" className="me-3" />
           </Link>
           <div id="location" className="d-flex align-items-center">
-            <img
-              src={LocationIcon}
-              alt="Location Pin"
-              className="me-2"
-            />
+            <img src={LocationIcon} alt="Location Pin" className="me-2" />
             <span>São Paulo, Brasil</span>
           </div>
         </div>
@@ -163,7 +154,7 @@ function HeaderComponent() {
                 onKeyDown={handleKeyDown}
                 onFocus={() => searchTerm.length >= 2 && setShowResults(true)}
               />
-              <button 
+              <button
                 className="btn bg-white border-start-0"
                 onClick={() => inputRef.current?.focus()}
               >
@@ -173,54 +164,64 @@ function HeaderComponent() {
                   <i className="bi bi-search"></i>
                 )}
               </button>
-              
+
               {/* Resultados da Busca */}
               {showResults && (
                 <ul id="search-results" className="show">
                   {searchResults.length === 0 ? (
                     <li className="text-center py-3">
                       <small className="text-muted">
-                        {searchTerm.length < 2 
-                          ? "Digite pelo menos 2 caracteres" 
+                        {searchTerm.length < 2
+                          ? "Digite pelo menos 2 caracteres"
                           : "Nenhum resultado encontrado"}
                       </small>
                     </li>
                   ) : (
                     searchResults.map(({ item, relevance }) => (
-                      <li 
+                      <li
                         key={item.id}
                         onClick={() => handleProductClick(item.id)}
                         className="d-flex align-items-center py-2 px-3"
                       >
-                        <img 
-                          src={item.image || `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(item.name.charAt(0))}`}
+                        <img
+                          src={
+                            item.image ||
+                            `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(
+                              item.name.charAt(0)
+                            )}`
+                          }
                           alt={item.name}
                           className="me-2 rounded"
                           style={{ width: "50px", height: "50px" }}
                           onError={(e) => {
                             e.target.onerror = null;
-                            e.target.src = `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(item.name.charAt(0))}`;
+                            e.target.src = `https://placehold.co/50x50/003321/DCFFD7/png?text=${encodeURIComponent(
+                              item.name.charAt(0)
+                            )}`;
                           }}
                         />
                         <div className="flex-grow-1">
-                          <div 
+                          <div
                             className="fw-bold text-custom-primary"
-                            dangerouslySetInnerHTML={{ 
-                              __html: highlightText(item.name, searchTerm) 
+                            dangerouslySetInnerHTML={{
+                              __html: highlightText(item.name, searchTerm),
                             }}
                           />
-                          <small 
+                          <small
                             className="text-muted d-block"
-                            dangerouslySetInnerHTML={{ 
-                              __html: highlightText(item.category, searchTerm) 
+                            dangerouslySetInnerHTML={{
+                              __html: highlightText(item.category, searchTerm),
                             }}
                           />
                           {item.description && (
-                            <small 
+                            <small
                               className="text-muted d-block text-truncate"
                               style={{ maxWidth: "300px" }}
-                              dangerouslySetInnerHTML={{ 
-                                __html: highlightText(item.description, searchTerm) 
+                              dangerouslySetInnerHTML={{
+                                __html: highlightText(
+                                  item.description,
+                                  searchTerm
+                                ),
                               }}
                             />
                           )}
@@ -254,9 +255,9 @@ function HeaderComponent() {
               <i className="bi bi-heart me-2"></i>
               Favoritos
             </Link>
-            
+
             <Link
-              to="/advance_search"
+              to="/busca-avancada"
               className="btn outline-custom-secondary text-custom-secondary"
             >
               Zé Busca
