@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 
 const SignUpForm = () => {
-  // State for form fields
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     password: "",
     confirmPassword: "",
-    userType: "", // Changed from radio buttons to dropdown selection
+    userType: "",
   });
 
-  // State for validation errors
   const [errors, setErrors] = useState({});
 
-  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -22,7 +19,6 @@ const SignUpForm = () => {
       [name]: value,
     });
 
-    // Clear error when field is edited
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -31,37 +27,31 @@ const SignUpForm = () => {
     }
   };
 
-  // Validate form
   const validateForm = () => {
     const newErrors = {};
 
-    // Validate full name (requires at least first and last name)
     if (!formData.fullName.trim()) {
       newErrors.fullName = "Nome completo é obrigatório";
     } else if (formData.fullName.trim().split(" ").length < 2) {
       newErrors.fullName = "Por favor, forneça nome e sobrenome";
     }
 
-    // Validate email
     if (!formData.email) {
       newErrors.email = "Email é obrigatório";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email inválido";
     }
 
-    // Password validation
     if (!formData.password) {
       newErrors.password = "Senha é obrigatória";
     } else if (formData.password.length < 6) {
       newErrors.password = "A senha deve ter pelo menos 6 caracteres";
     }
 
-    // Confirm password
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "As senhas não coincidem";
     }
 
-    // User type validation
     if (!formData.userType) {
       newErrors.userType = "Por favor, selecione uma opção";
     }
@@ -69,7 +59,6 @@ const SignUpForm = () => {
     return newErrors;
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -79,9 +68,7 @@ const SignUpForm = () => {
       return;
     }
 
-    // Process form submission
     console.log("Form submitted:", formData);
-    // Here you would typically make an API call to register the user
   };
 
   return (
@@ -168,7 +155,6 @@ const SignUpForm = () => {
         )}
       </div>
 
-      {/* Dropdown with custom arrow icon */}
       <div className="form-group">
         <div className="position-relative">
           <select
@@ -179,7 +165,7 @@ const SignUpForm = () => {
             value={formData.userType}
             onChange={handleInputChange}
             required
-            style={{ paddingRight: "30px" }} // Add space for the arrow
+            style={{ paddingRight: "30px" }}
           >
             <option value="" disabled>
               Escolha uma opção
@@ -187,7 +173,7 @@ const SignUpForm = () => {
             <option value="renter">Quero alugar equipamentos</option>
             <option value="owner">Quero disponibilizar equipamentos</option>
           </select>
-          {/* Custom dropdown arrow icon */}
+
           <div
             style={{
               position: "absolute",
