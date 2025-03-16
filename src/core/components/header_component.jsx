@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Fuse from "fuse.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,23 +14,42 @@ import Logo from "../../assets/svg/LOGO_1.svg";
 import LocationIcon from "../../assets/svg/location_icon.svg";
 import productsData from "../../data/products.json";
 import "../../styles/css/custom_styles.css";
+import { useUser } from "../../context/user_context";
+import { toast } from "react-toastify";
 
 function HeaderComponent() {
+  const { currentUser, isLoggedIn, logout } = useUser();
+  const navigate = useNavigate();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
   const searchRef = useRef(null);
+  const userDropdownRef = useRef(null);
   const inputRef = useRef(null);
-  const navigate = useNavigate();
+
+  const firstName = currentUser ? currentUser.name.split(" ")[0] : "";
+
+  const getAvatarText = () => {
+    if (!currentUser) return "";
+
+    const nameParts = currentUser.name.split(" ");
+    if (nameParts.length === 1) return nameParts[0].charAt(0).toUpperCase();
+
+    return (
+      nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)
+    ).toUpperCase();
+  };
 
   // Configuração do Fuse.js para busca
   const fuseOptions = {
     keys: [
-      { name: 'name', weight: 0.4 },
-      { name: 'category', weight: 0.3 },
-      { name: 'description', weight: 0.2 },
-      { name: 'technical_details', weight: 0.1 }
+      { name: "name", weight: 0.4 },
+      { name: "category", weight: 0.3 },
+      { name: "description", weight: 0.2 },
+      { name: "technical_details", weight: 0.1 },
     ],
     threshold: 0.3,
     distance: 100,
@@ -32,7 +57,7 @@ function HeaderComponent() {
     minMatchCharLength: 2,
     useExtendedSearch: true,
     ignoreLocation: true,
-    findAllMatches: true
+    findAllMatches: true,
   };
 
   // Inicializa o Fuse.js com memoização
@@ -43,6 +68,13 @@ function HeaderComponent() {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowResults(false);
+      }
+
+      if (
+        userDropdownRef.current &&
+        !userDropdownRef.current.contains(event.target)
+      ) {
+        setShowUserDropdown(false);
       }
     };
 
@@ -69,11 +101,13 @@ function HeaderComponent() {
           const results = fuse.search(value, { limit: 5 });
 
           // Organiza os resultados por relevância
-          const processedResults = results.map(({ item, score }) => ({
-            item,
-            score,
-            relevance: Math.round((1 - score) * 100)
-          })).filter(result => result.relevance > 30); // Filtra resultados com menos de 30% de relevância
+          const processedResults = results
+            .map(({ item, score }) => ({
+              item,
+              score,
+              relevance: Math.round((1 - score) * 100),
+            }))
+            .filter((result) => result.relevance > 30); // Filtra resultados com menos de 30% de relevância
 
           setSearchResults(processedResults);
           setShowResults(true);
@@ -90,6 +124,20 @@ function HeaderComponent() {
     }, 300),
     [fuse]
   );
+
+  const handleLogout = () => {
+    logout();
+    setShowUserDropdown(false);
+    toast.success("Logout realizado com sucesso!", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+    navigate("/");
+  };
+
+  const toggleUserDropdown = () => {
+    setShowUserDropdown((prev) => !prev);
+  };
 
   // Manipular mudanças no input
   const handleInputChange = (e) => {
@@ -118,8 +166,8 @@ function HeaderComponent() {
   const highlightText = (text, searchTerm) => {
     if (!searchTerm) return text;
     try {
-      const regex = new RegExp(`(${searchTerm})`, 'gi');
-      return text.replace(regex, '<mark>$1</mark>');
+      const regex = new RegExp(`(${searchTerm})`, "gi");
+      return text.replace(regex, "<mark>$1</mark>");
     } catch {
       return text;
     }
@@ -263,18 +311,78 @@ function HeaderComponent() {
               Zé Busca
             </Link>
 
-            <Link
-              to="/signin"
-              className="btn bg-custom-secondary text-custom-primary"
-            >
-              Entrar
-            </Link>
-            <Link
-              to="/signup"
-              className="btn bg-custom-secondary text-custom-primary"
-            >
-              Cadastrar
-            </Link>
+            {isLoggedIn ? (
+              <div
+                className="user-menu position-relative"
+                ref={userDropdownRef}
+              >
+                <button
+                  className="btn bg-custom-secondary text-custom-primary d-flex align-items-center"
+                  onClick={toggleUserDropdown}
+                >
+                  <div className="user-avatar me-2">{getAvatarText()}</div>
+                  <span className="d-none d-md-inline">Olá, {firstName}</span>
+                  <i className="bi bi-chevron-down ms-2"></i>
+                </button>
+
+                {showUserDropdown && (
+                  <div className="user-dropdown">
+                    <div className="user-dropdown-header">
+                      <div className="d-flex align-items-center">
+                        <div className="user-avatar-large me-3">
+                          {getAvatarText()}
+                        </div>
+                        <div>
+                          <h6 className="mb-0">{currentUser.name}</h6>
+                          <small className="text-muted">
+                            {currentUser.email}
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="user-dropdown-body">
+                      <a href="#" className="user-dropdown-item">
+                        <i className="bi bi-person me-2"></i>
+                        Meu Perfil
+                      </a>
+                      {currentUser.is_seller && (
+                        <a href="#" className="user-dropdown-item">
+                          <i className="bi bi-shop me-2"></i>
+                          Minha Loja
+                        </a>
+                      )}
+                      <a href="#" className="user-dropdown-item">
+                        <i className="bi bi-gear me-2"></i>
+                        Configurações
+                      </a>
+                      <hr className="dropdown-divider" />
+                      <button
+                        className="user-dropdown-item text-danger"
+                        onClick={handleLogout}
+                      >
+                        <i className="bi bi-box-arrow-right me-2"></i>
+                        Sair
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Link
+                  to="/signin"
+                  className="btn bg-custom-secondary text-custom-primary"
+                >
+                  Entrar
+                </Link>
+                <Link
+                  to="/signup"
+                  className="btn bg-custom-secondary text-custom-primary"
+                >
+                  Cadastrar
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

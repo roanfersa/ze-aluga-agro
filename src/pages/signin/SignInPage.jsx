@@ -4,6 +4,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "../../styles/css/singin.css";
 import SignInForm from "./components/sign_in_form";
 import SocialLoginButtons from "./components/social_login_buttons";
+import { Link } from "react-router-dom";
 
 function SignInPage() {
   return (
@@ -21,21 +22,22 @@ function SignInPage() {
           <div className="col-12 col-md-6 signin-form-container bg-custom-primary">
             <div className="signin-form-wrapper">
               <div className="signin-logo-container">
-                <a href="/">
+                <Link to={"/"}>
                   <img
                     src="/src/assets/svg/LOGO_1.svg"
                     alt="Zé Aluga Logo"
                     className="signin-logo"
                   />
-                </a>
+                </Link>
               </div>
 
               <h1 className="signin-title">Login</h1>
               <p className="signin-subtitle">
                 Não tem uma conta?{" "}
-                <a href="#" className="btn signin-cadastre">
+                <Link to={"/signup"} className="btn signin-cadastre">
                   Cadastre-se
-                </a>
+                </Link>
+                
               </p>
 
               <SignInForm />
