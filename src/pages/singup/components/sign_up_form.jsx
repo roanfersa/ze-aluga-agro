@@ -8,18 +8,17 @@ const SignUpForm = () => {
     phone: "",
     password: "",
     confirmPassword: "",
-    userType: "buyer",
+    userType: "",
   });
 
   const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-
 
     if (errors[name]) {
       setErrors({
@@ -32,41 +31,30 @@ const SignUpForm = () => {
   const validateForm = () => {
     const newErrors = {};
 
-
     if (!formData.fullName.trim()) {
       newErrors.fullName = "Nome completo é obrigatório";
     } else if (formData.fullName.trim().split(" ").length < 2) {
-      newErrors.fullName = "Por favor, insira nome e sobrenome";
+      newErrors.fullName = "Por favor, forneça nome e sobrenome";
     }
 
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
+    if (!formData.email) {
       newErrors.email = "Email é obrigatório";
-    } else if (!emailRegex.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email inválido";
     }
 
-
-    if (formData.phone) {
-      const phoneRegex = /^\+?\d{10,15}$/;
-      if (!phoneRegex.test(formData.phone.replace(/\D/g, ""))) {
-        newErrors.phone = "Telefone inválido";
-      }
-    }
-
-
     if (!formData.password) {
       newErrors.password = "Senha é obrigatória";
-    } else if (formData.password.length < 8) {
-      newErrors.password = "A senha deve ter pelo menos 8 caracteres";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "A senha deve ter pelo menos 6 caracteres";
     }
 
-    
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Confirmação de senha é obrigatória";
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "As senhas não conferem";
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "As senhas não coincidem";
+    }
+
+    if (!formData.userType) {
+      newErrors.userType = "Por favor, selecione uma opção";
     }
 
     return newErrors;
@@ -76,7 +64,6 @@ const SignUpForm = () => {
     e.preventDefault();
 
     const formErrors = validateForm();
-
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
 
@@ -94,6 +81,7 @@ const SignUpForm = () => {
     }
 
     console.log("Form submitted:", formData);
+
 
     try {
       
@@ -128,6 +116,7 @@ const SignUpForm = () => {
         theme: "colored"
       });
     }
+
   };
 
   return (
@@ -135,14 +124,15 @@ const SignUpForm = () => {
       <div className="form-group">
         <input
           type="text"
+          name="fullName"
           className={`form-control signin-input ${
             errors.fullName ? "is-invalid" : ""
           }`}
           placeholder="Nome completo"
-          name="fullName"
           value={formData.fullName}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
+          autoComplete="name"
         />
         {errors.fullName && (
           <div className="invalid-feedback">{errors.fullName}</div>
@@ -152,13 +142,13 @@ const SignUpForm = () => {
       <div className="form-group">
         <input
           type="email"
+          name="email"
           className={`form-control signin-input ${
             errors.email ? "is-invalid" : ""
           }`}
           placeholder="Email"
-          name="email"
           value={formData.email}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
           autoComplete="email"
         />
@@ -168,27 +158,25 @@ const SignUpForm = () => {
       <div className="form-group">
         <input
           type="tel"
-          className={`form-control signin-input ${
-            errors.phone ? "is-invalid" : ""
-          }`}
-          placeholder="Telefone / WhatsApp (opcional)"
           name="phone"
+          className="form-control signin-input"
+          placeholder="Telefone / WhatsApp (opcional)"
           value={formData.phone}
-          onChange={handleChange}
+          onChange={handleInputChange}
+          autoComplete="tel"
         />
-        {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
       </div>
 
       <div className="form-group">
         <input
           type="password"
+          name="password"
           className={`form-control signin-input ${
             errors.password ? "is-invalid" : ""
           }`}
           placeholder="Senha"
-          name="password"
           value={formData.password}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
           autoComplete="new-password"
         />
@@ -200,13 +188,13 @@ const SignUpForm = () => {
       <div className="form-group">
         <input
           type="password"
+          name="confirmPassword"
           className={`form-control signin-input ${
             errors.confirmPassword ? "is-invalid" : ""
           }`}
           placeholder="Confirmar senha"
-          name="confirmPassword"
           value={formData.confirmPassword}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
           autoComplete="new-password"
         />
@@ -216,39 +204,67 @@ const SignUpForm = () => {
       </div>
 
       <div className="form-group">
-        <div className="d-flex justify-content-between mb-3">
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="userType"
-              id="buyer"
-              value="buyer"
-              checked={formData.userType === "buyer"}
-              onChange={handleChange}
-            />
-            <label className="form-check-label text-white" htmlFor="buyer">
-              Quero alugar equipamentos
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="userType"
-              id="seller"
-              value="seller"
-              checked={formData.userType === "seller"}
-              onChange={handleChange}
-            />
-            <label className="form-check-label text-white" htmlFor="seller">
-              Quero disponibilizar equipamentos
-            </label>
+        <div className="position-relative">
+          <select
+            name="userType"
+            className={`form-control signin-input ${
+              errors.userType ? "is-invalid" : ""
+            }`}
+            value={formData.userType}
+            onChange={handleInputChange}
+            required
+            style={{ paddingRight: "30px" }}
+          >
+            <option value="" disabled>
+              Escolha uma opção
+            </option>
+            <option value="renter">Quero alugar equipamentos</option>
+            <option value="owner">Quero disponibilizar equipamentos</option>
+          </select>
+
+          <div
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              pointerEvents: "none",
+              color: "#FFFFFF",
+              fontSize: "16px",
+            }}
+          >
+            <i className="bi bi-chevron-down"></i>
           </div>
         </div>
+        {errors.userType && (
+          <div className="invalid-feedback">{errors.userType}</div>
+        )}
       </div>
 
-      <button type="submit" className="btn signin-btn">
+      <div className="form-group form-check">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="termsCheck"
+          required
+        />
+        <label
+          className="form-check-label"
+          htmlFor="termsCheck"
+          style={{ color: "#FFFFFF" }}
+        >
+          Eu concordo com os
+          <a href="#" className="signin-link">
+            Termos de Uso
+          </a>{" "}
+          e
+          <a href="#" className="signin-link">
+            Política de Privacidade
+          </a>
+        </label>
+      </div>
+
+      <button type="submit" className="btn signin-btn mb-3">
         Cadastrar
       </button>
     </form>
