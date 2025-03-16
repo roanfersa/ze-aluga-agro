@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -82,19 +82,17 @@ const SignUpForm = () => {
 
     console.log("Form submitted:", formData);
 
-
     try {
-      
-      toast.success('Cadastro realizado com sucesso!', {
+      toast.success("Cadastro realizado com sucesso!", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        theme: "colored"
+        theme: "colored",
       });
-      
+
       setFormData({
         fullName: "",
         email: "",
@@ -103,20 +101,17 @@ const SignUpForm = () => {
         confirmPassword: "",
         userType: "buyer",
       });
-      
     } catch (error) {
-      
-      toast.error('Erro ao realizar o cadastro. Por favor, tente novamente.', {
+      toast.error("Erro ao realizar o cadastro. Por favor, tente novamente.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        theme: "colored"
+        theme: "colored",
       });
     }
-
   };
 
   return (

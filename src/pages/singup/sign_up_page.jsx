@@ -11,7 +11,7 @@ function SignUpPage() {
   return (
     <div className="signin-wrapper">
 
-      <ToastContainer 
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
