@@ -6,11 +6,11 @@ import SignUpForm from "./components/sign_up_form";
 import SocialLoginButtons from "../signin/components/social_login_buttons";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 function SignUpPage() {
   return (
     <div className="signin-wrapper">
-
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -36,21 +36,21 @@ function SignUpPage() {
           <div className="col-12 col-md-6 signin-form-container bg-custom-primary">
             <div className="signin-form-wrapper">
               <div className="signin-logo-container">
-                <a href="/">
+                <Link to={"/"}>
                   <img
                     src="/src/assets/svg/LOGO_1.svg"
                     alt="Zé Aluga Logo"
                     className="signin-logo"
                   />
-                </a>
+                </Link>
               </div>
 
               <h1 className="signin-title">Cadastro</h1>
               <p className="signin-subtitle">
                 Já tem uma conta?{" "}
-                <a href="/signin" className="btn signin-cadastre">
+                <Link to={"/signin"} className="btn signin-cadastre">
                   Entrar
-                </a>
+                </Link>
               </p>
 
               <SignUpForm />

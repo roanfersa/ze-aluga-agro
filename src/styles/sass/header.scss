@@ -64,7 +64,7 @@
   // Campo de Busca
   .col-md-5 {
     position: relative;
-    
+
     .input-group {
       position: relative;
       width: 90%;
@@ -289,4 +289,91 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #003321;
+  color: #DCFFD7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.user-avatar-large {
+  width: A48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #003321;
+  color: #DCFFD7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.user-menu {
+  position: relative;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.user-dropdown-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.user-dropdown-body {
+  padding: 10px 0;
+}
+
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #212529;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+.user-dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #003321;
+}
+
+.dropdown-divider {
+  margin: 5px 0;
+  border-top: 1px solid #eeeeee;
+}
+
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

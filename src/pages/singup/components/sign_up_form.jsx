@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../context/user_context";
 
 const SignUpForm = () => {
+  const { register } = useUser();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -12,6 +17,7 @@ const SignUpForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -60,7 +66,7 @@ const SignUpForm = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formErrors = validateForm();
@@ -80,27 +86,40 @@ const SignUpForm = () => {
       return;
     }
 
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
 
     try {
-      toast.success("Cadastro realizado com sucesso!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "colored",
-      });
+      const result = await register(formData);
 
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirmPassword: "",
-        userType: "buyer",
-      });
+      if (result.success) {
+        toast.success("Cadastro realizado com sucesso!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+        });
+
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } else {
+        toast.error(
+          result.error ||
+            "Erro ao realizar o cadastro. Por favor, tente novamente.",
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+          }
+        );
+      }
     } catch (error) {
       toast.error("Erro ao realizar o cadastro. Por favor, tente novamente.", {
         position: "top-right",
@@ -111,6 +130,8 @@ const SignUpForm = () => {
         draggable: true,
         theme: "colored",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -128,6 +149,7 @@ const SignUpForm = () => {
           onChange={handleInputChange}
           required
           autoComplete="name"
+          disabled={isSubmitting}
         />
         {errors.fullName && (
           <div className="invalid-feedback">{errors.fullName}</div>
@@ -146,6 +168,7 @@ const SignUpForm = () => {
           onChange={handleInputChange}
           required
           autoComplete="email"
+          disabled={isSubmitting}
         />
         {errors.email && <div className="invalid-feedback">{errors.email}</div>}
       </div>
@@ -159,6 +182,7 @@ const SignUpForm = () => {
           value={formData.phone}
           onChange={handleInputChange}
           autoComplete="tel"
+          disabled={isSubmitting}
         />
       </div>
 
@@ -174,6 +198,7 @@ const SignUpForm = () => {
           onChange={handleInputChange}
           required
           autoComplete="new-password"
+          disabled={isSubmitting}
         />
         {errors.password && (
           <div className="invalid-feedback">{errors.password}</div>
@@ -192,6 +217,7 @@ const SignUpForm = () => {
           onChange={handleInputChange}
           required
           autoComplete="new-password"
+          disabled={isSubmitting}
         />
         {errors.confirmPassword && (
           <div className="invalid-feedback">{errors.confirmPassword}</div>
@@ -209,6 +235,7 @@ const SignUpForm = () => {
             onChange={handleInputChange}
             required
             style={{ paddingRight: "30px" }}
+            disabled={isSubmitting}
           >
             <option value="" disabled>
               Escolha uma opção
@@ -242,25 +269,37 @@ const SignUpForm = () => {
           className="form-check-input"
           id="termsCheck"
           required
+          disabled={isSubmitting}
         />
         <label
           className="form-check-label"
           htmlFor="termsCheck"
           style={{ color: "#FFFFFF" }}
         >
-          Eu concordo com os
+          Eu concordo com os{" "}
           <a href="#" className="signin-link">
             Termos de Uso
           </a>{" "}
-          e
+          e{" "}
           <a href="#" className="signin-link">
             Política de Privacidade
           </a>
         </label>
       </div>
 
-      <button type="submit" className="btn signin-btn mb-3">
-        Cadastrar
+      <button
+        type="submit"
+        className="btn signin-btn mb-3"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? (
+          <span>
+            <i className="bi bi-arrow-repeat spinning me-2"></i>
+            Cadastrando...
+          </span>
+        ) : (
+          "Cadastrar"
+        )}
       </button>
     </form>
   );
