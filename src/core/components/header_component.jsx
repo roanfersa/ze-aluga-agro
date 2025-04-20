@@ -16,6 +16,8 @@ import productsData from "../../data/products.json";
 import "../../styles/css/custom_styles.css";
 import { useUser } from "../../context/user_context";
 import { toast } from "react-toastify";
+// Adicione o import do CartIcon
+import CartIcon from "../../pages/cart_page/components/CartIcon";
 
 function HeaderComponent() {
   const { currentUser, isLoggedIn, logout } = useUser();
@@ -383,6 +385,8 @@ function HeaderComponent() {
                 </Link>
               </>
             )}
+            {/* Adicione o CartIcon aqui */}
+            <CartIcon />
           </div>
         </div>
       </div>

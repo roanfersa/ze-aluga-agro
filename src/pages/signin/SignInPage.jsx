@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../../styles/css/singin.css";
@@ -7,6 +8,39 @@ import SocialLoginButtons from "./components/social_login_buttons";
 import { Link } from "react-router-dom";
 
 function SignInPage() {
+    const params = new URLSearchParams(location.search);
+    const redirectTo = params.get("redirect");
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setIsSubmitting(true);
+
+      try {
+        const result = await login(formData.email, formData.password);
+
+        if (result.success) {
+          toast.success("Login realizado com sucesso!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+
+          setTimeout(() => {
+            if (redirectTo === "checkout") {
+              navigate("/checkout");
+            } else {
+              navigate("/");
+            }
+          }, 1000);
+        } else {
+          // TODO: Adicionar handler para possiveis erros
+        }
+      } catch (error) {
+        // TODO: Adicionar handler para possiveis erros
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
+
   return (
     <div className="signin-wrapper">
       <div className="signin-container">
@@ -37,7 +71,7 @@ function SignInPage() {
                 <Link to={"/signup"} className="btn signin-cadastre">
                   Cadastre-se
                 </Link>
-                
+
               </p>
 
               <SignInForm />

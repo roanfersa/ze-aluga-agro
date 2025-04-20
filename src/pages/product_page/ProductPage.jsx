@@ -7,6 +7,8 @@ import { ProductModel } from "../../models/products/product_model";
 import productsData from "../../data/products.json";
 import HeaderComponent from "../../core/components/header_component";
 import FooterComponent from "../../core/components/footer_component";
+import { useCart } from "../../context/CartContext";
+import { toast } from "react-toastify";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -14,6 +16,7 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedDates, setSelectedDates] = useState([]);
   const [selectedImage, setSelectedImage] = useState(0);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const loadProduct = () => {
@@ -59,6 +62,36 @@ const ProductPage = () => {
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const handleAddToCart = () => {
+    if (!product) return;
+
+    if (!product.is_available) {
+      toast.error("Este produto não está disponível para aluguel no momento.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    if (selectedDates.length !== 2) {
+      toast.warning(
+        "Por favor, selecione o período de aluguel (data inicial e final).",
+        {
+          position: "top-right",
+          autoClose: 3000,
+        }
+      );
+      return;
+    }
+
+    const rentalPeriod = {
+      startDate: selectedDates[0],
+      endDate: selectedDates[1],
+    };
+
+    addToCart(product, quantity, rentalPeriod);
   };
 
   if (!product) {
@@ -243,14 +276,22 @@ const ProductPage = () => {
               }}
               value={selectedDates}
               onChange={(dates) => setSelectedDates(dates)}
-              className="form-control flatpickr-input mb-2"
+              className="form-control flatpickr-input mb-3"
               placeholder="Selecione uma data de início e fim"
             />
 
-            <button className="btn btn-buy" disabled={!product.is_available}>
+            <button
+              className="btn btn-buy"
+              disabled={!product.is_available}
+              onClick={handleAddToCart}
+            >
               Alugar Agora
             </button>
-            <button className="btn btn-cart" disabled={!product.is_available}>
+            <button
+              className="btn btn-cart"
+              disabled={!product.is_available}
+              onClick={handleAddToCart}
+            >
               Adicionar ao Carrinho
             </button>
 
