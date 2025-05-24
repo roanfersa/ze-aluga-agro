@@ -343,17 +343,17 @@ function HeaderComponent() {
                       </div>
                     </div>
                     <div className="user-dropdown-body">
-                      <a href="#" className="user-dropdown-item">
+                      <a href="/profile" className="user-dropdown-item">
                         <i className="bi bi-person me-2"></i>
                         Meu Perfil
                       </a>
                       {currentUser.is_seller && (
-                        <a href="#" className="user-dropdown-item">
+                        <a href="/my-store" className="user-dropdown-item">
                           <i className="bi bi-shop me-2"></i>
                           Minha Loja
                         </a>
                       )}
-                      <a href="#" className="user-dropdown-item">
+                      <a href="/settings" className="user-dropdown-item">
                         <i className="bi bi-gear me-2"></i>
                         Configurações
                       </a>

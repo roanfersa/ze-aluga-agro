@@ -4,6 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./pages/home/HomePage";
 import SignInPage from "./pages/signin/SignInPage";
 import SignUpPage from "./pages/singup/sign_up_page";
+import ProfilePage from './pages/profile/ProfilePage';
+import MyStorePage from './pages/my_store/MyStorePage';
+import SettingsPage from './pages/settings/SettingsPage';
 import SupportPage from "./pages/support/SupportPage";
 import ProductPage from "./pages/product_page/ProductPage";
 import Favorites from "./pages/favorite_page/Favorites";
@@ -33,6 +36,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/my-store" element={<MyStorePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/produto/:id" element={<ProductPage />} />
           <Route
