@@ -134,7 +134,7 @@ function FooterComponent() {
               </a>
             </div>
             <div className="col-md-6 text-md-end text-custom-secondary">
-              <small>&copy; 2024 Zé Aluga | Designed by Thenopholo</small>
+              <small>&copy; 2025 Zé Aluga </small>
             </div>
           </div>
         </div>
