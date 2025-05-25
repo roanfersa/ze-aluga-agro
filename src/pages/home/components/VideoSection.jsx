@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../../styles/css/video_section.css';
 
 const VideoSection = ({ 
-  videoId = "OwXlS_OqSBQ",
+  videoId = "9OyUG3UpG1g",
   title = "Descubra como funciona o Zé Aluga",
   subtitle = "Veja nosso vídeo explicativo e saiba como alugar produtos de forma fácil e segura"
 }) => {
